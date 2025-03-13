@@ -59,17 +59,18 @@ table {
 
 caption {
   padding: 2rem;
-  background-color: bisque;
+  background-color: #FF6F00;
   border: 1px solid #333;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 tr:hover {
-  background-color: aquamarine;
+  background-color: #6200EA;
+  transition: background-color 0.3s ease;
 }
 
 td {
   text-align: center;
-  border: 1px solid #333;
+  border: 1px solid #000000;
   padding: 1rem;
 }

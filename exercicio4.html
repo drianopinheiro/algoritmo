@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 4</title>
+  </head>
+  <body>
+    <table>
+      <caption>
+        Operadores Aritméticos
+      </caption>
+      <thead>
+        <td>Operador</td>
+        <td>Descrição</td>
+        <td>Exemplo (let x = 10, y = 5;)</td>
+        <td>Resultado</td>
+      </thead>
+
+      <tr>
+        <td>+</td>
+        <td>Adição</td>
+        <td>x + y</td>
+        <td>15</td>
+      </tr>
+
+      <tr>
+        <td>-</td>
+        <td>Subtração</td>
+        <td>x - y</td>
+        <td>5</td>
+      </tr>
+
+      <tr>
+        <td>*</td>
+        <td>Multiplicação</td>
+        <td>x * y</td>
+        <td>50</td>
+      </tr>
+
+      <tr>
+        <td>/</td>
+        <td>Divisão</td>
+        <td>x / y</td>
+        <td>2</td>
+      </tr>
+
+      <tr>
+        <td>%</td>
+        <td>Módulo (resto da divisão)</td>
+        <td>x % y</td>
+        <td>0</td>
+      </tr>
+
+      <tr>
+        <td>**</td>
+        <td>Exponenciação</td>
+        <td>x ** y</td>
+        <td>100000</td>
+      </tr>
+
+      <tr>
+        <td>++</td>
+        <td>Incremento</td>
+        <td>x++</td>
+        <td>11 (após execução)</td>
+      </tr>
+
+      <tr>
+        <td>--</td>
+        <td>Decremento</td>
+        <td>x--</td>
+        <td>9 (após execução)</td>
+      </tr>
+    </table>
+
+    <script>
+      //4) Desenvolva um algoritmo que leia dois números inteiros e mostre o somatório
+      // entre eles.
+      // Ex:
+      // Digite um valor: 8
+      // Digite outro valor: 5
+      // A soma entre 8 e 5 é igual a 13.
+
+      let num1 = Number(prompt("Digite um valor:"));
+      let num2 = Number(prompt("Digite outro valor:"));
+
+      // A soma entre eles
+      function somaNumeros() {
+        let soma = num1 + num2;
+        alert("A soma entre " + num1 + " e " + num2 + " é igual a " + soma);
+      }
+
+      somaNumeros();
+    </script>
+  </body>
+</html>
