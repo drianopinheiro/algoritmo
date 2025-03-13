@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercícios de Algoritmo 6</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script>
+      // 6) Faça um programa que leia um número inteiro e mostre o seu antecessor e seu
+      // sucessor.
+      // Ex:
+      // Digite um número: 9
+      // O antecessor de 9 é 8
+      // O sucessor de 9 é 10
+
+      let numero = Number(prompt("Digite um número:"));
+      function mostre() {
+        let antecessor = numero - 1;
+        let sucessor = numero + 1;
+        document.write(
+          "<h1> O antecessor de " + numero + " é " + antecessor + "!</h1><br>"
+        );
+        document.write(
+          "<h1> O sucessor de " + numero + " é " + sucessor + "!</h1>"
+        );
+      }
+      mostre();
+    </script>
+  </body>
+</html>
