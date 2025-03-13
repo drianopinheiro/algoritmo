@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercícios de Algoritmo 5</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <script>
+      // 5) Faça um programa que leia as duas notas de um aluno em uma matéria e mostre
+      // na tela a sua média na disciplina.
+      // Ex:
+      // Nota 1: 4.5
+      // Nota 2: 8.5
+      // A média entre 4.5 e 8.5 é igual a 6.5
+
+      let nota1 = Number(prompt("Nota 1:"));
+      let nota2 = Number(prompt("Nota 2:"));
+
+      function mediaAluno() {
+        let media = (nota1 + nota2) / 2;
+        document.write("<h1>A média entre nota 1: " + nota1 + " e nota 2: " + nota2 + " é igual a média: " + media + "!<h1>");
+      }
+      mediaAluno();
+    </script>
+  </body>
+</html>
