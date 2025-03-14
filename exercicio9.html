@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercícios de Algoritmo 9</title>
+  </head>
+  <body>
+    <script>
+    // 9) Faça um algoritmo que leia quanto dinheiro uma pessoa tem na carteira (em R$) 
+    // e mostre quantos dólares ela pode comprar. Considere US$1,00 = R$5,74.   
+      let reais = Number(prompt("Digite quantos reais você tem na carteira:"));
+
+      function converterParaDolar(reais) {
+        let dolar = reais / 5.74;
+        document.write(`<p>Você pode comprar aproximadamente <strong>US$${dolar.toFixed(2)}</strong>!</p>` //Formatação do valor com .toFixed(2) para exibir apenas duas casas decimais
+        );
+      }
+      converterParaDolar(reais);
+    </script>
+  </body>
+</html>
