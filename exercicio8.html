@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercícios de Algoritmo 8</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script>
+      //   8) Desenvolva um programa que leia uma distância em metros e mostre os valores relativos em outras medidas.
+      //   Ex:
+      //   Digite uma distância em metros: 185.72
+      //   A distância de 85.7m corresponde a:
+      //   0.18572Km
+      //   1.8572Hm
+      //   18.572Dam
+      //   1857.2dm
+      //   18572.0cm
+      //   185720.0mm
+
+      let metros = Number(prompt(" Digite uma distância em metros:"));
+
+      function distancia() {
+        let km = metros / 1000;
+        let hm = metros / 100;
+        let dam = metros / 10;
+        let dm = metros * 10;
+        let cm = metros * 100;
+        let mm = metros * 1000;
+        document.write(`<p>A distância de ${metros}m corresponde a:</p>`);
+        document.write(`<p>${km} Km</p>`);
+        document.write(`<p>${hm} Hm</p>`);
+        document.write(`<p>${dam} Dam</p>`);
+        document.write(`<p>${dm} dm</p>`);
+        document.write(`<p>${cm} cm</p>`);
+        document.write(`<p>${mm} mm</p>`);
+      }
+      distancia();
+    </script>
+  </body>
+</html>
