@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercícios de Algoritmo 10</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script>
+      //   10) Faça um algoritmo que leia a largura e altura de uma parede, calcule e
+      //   mostre a área a ser pintada e a quantidade de tinta necessária para o serviço,
+      //   sabendo que cada litro de tinta pinta uma área de 2metros quadrados.
+      let largura = Number(prompt("Digite a largura da parede em metros:"));
+      let altura = Number(prompt("Digite a altura da parede em metros:"));
+
+      function areaSerPintada() {
+        let area = largura * altura;
+        let tinta = area / 2; // Cada litro pinta 2m²
+
+        document.write(`<p>A área total da parede é <strong>${area.toFixed(2)}m²</strong>.</p>`);
+        document.write(`<p>Você precisará de aproximadamente <strong>${tinta.toFixed(2)} litros</strong> de tinta para pintá-la.</p>`);
+      }
+
+      areaSerPintada();
+    </script>
+  </body>
+</html>
