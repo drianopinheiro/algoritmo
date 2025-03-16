@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercícios de Algoritmo 11</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script>
+      // 11) Desenvolva uma lógica que leia os valores de A, B e C de uma equação do
+      // segundo grau e mostre o valor de Delta.
+      let A = Number(prompt("Digite o valor de A:"));
+      let B = Number(prompt("Digite o valor de B:"));
+      let C = Number(prompt("Digite o valor de C:"));
+
+      function valorDelta() {
+        let delta = B * B - 4 * A * C;
+
+        document.write(`<p>O valor de Δ (Delta) é: <strong>${delta}</strong></p>`);
+      }
+      valorDelta();
+    </script>
+  </body>
+</html>
