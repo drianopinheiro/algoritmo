@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 12</title>
+  </head>
+  <body>
+    <script>
+      // 12) Crie um programa que leia o preço de um produto, calcule e mostre o seu
+      // PREÇO PROMOCIONAL, com 5% de desconto.
+      let preço = Number(prompt("Digite o preço do produto:"));
+
+      function calculeDesconto() {
+        let desconto = preço * 0.05; // Calcula o valor do desconto (5%)
+        let precoPromocional = preço - desconto; // Calcula o valor final com desconto
+
+        document.write(`<h1>O valor original do produto é: <strong>R$ ${preço.toFixed(2)}</strong></h1>`);
+        document.write(`<h1>O preço promocional com 5% de desconto é: <strong>R$ ${precoPromocional.toFixed(2)}</strong></h1>`);
+      }
+
+      calculeDesconto();
+    </script>
+  </body>
+</html>
+
