@@ -59,13 +59,13 @@ table {
 
 caption {
   padding: 2rem;
-  background-color: #FF6F00;
+  background-color: #ff6f00;
   border: 1px solid #333;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 tr:hover {
-  background-color: #6200EA;
+  background-color: #6200ea;
   transition: background-color 0.3s ease;
 }
 
@@ -73,4 +73,20 @@ td {
   text-align: center;
   border: 1px solid #000000;
   padding: 1rem;
+}
+
+.conteiner {
+  border: 2px solid #000000;
+  border-radius: 5px;
+  padding: 10px 100px 100px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.margin-10px {
+  margin: 10px;
+}
+
+.margin-left-10px {
+  margin-left: 10px;
 }

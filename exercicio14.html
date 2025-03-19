@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 14</title>
+  </head>
+  <body>
+    <div class="conteiner">
+      <h1>Locadora de carros</h1>
+      <h2>Valor a pagar:</h2>
+
+      <div class="margin-10px">
+        <label for="valordias">Dias alugados:</label>
+        <input type="number" id="valordias" class="margin-left-10px" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="valorkm">Km percorridos:</label>
+        <input type="number" id="valorkm" class="margin-left-10px" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">Total a pagar:</label>
+        <input type="text" id="resultado" readonly disabled class="margin-left-10px" />
+      </div>
+
+      <button onclick="clicar()">Calcular</button>
+    </div>
+
+    <script>
+      function clicar() {
+        let dias = Number(document.querySelector("#valordias").value);
+        let km = Number(document.querySelector("#valorkm").value);
+        let res = document.querySelector("#resultado");
+
+        let precoTotalDias = dias * 90; // Calcula o custo dos dias alugados
+        let precoTotalKm = km * 0.20; // Calcula o custo pelos km rodados
+        let valorTotal = precoTotalDias + precoTotalKm; // Soma os valores
+
+        res.value = `R$ ${valorTotal.toFixed(2)}`; // Exibe o resultado formatado
+      }
+    </script>
+  </body>
+</html>
