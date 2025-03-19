@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercícios de Algoritmo 1</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script>
+      //1) Escreva um programa que mostre na tela a mensagem "Olá, Mundo!"
+
+      //Em JavaScript, os comandos mais comuns para saída de dados são:
+
+      alert("Olá, mundo!");
+
+      let titulo = document.createElement("h1");
+      titulo.innerText = "Olá, Mundo!";
+
+      // Criar um botão
+      let botao = document.createElement("button");
+
+      // Definir o texto do botão
+      botao.innerText = "Clique aqui";
+
+      // Adicionar um evento de clique
+      botao.addEventListener("click", function () {
+        alert("Parabéns! A maldição do Ôla Mundo foi quebrada!");
+      });
+
+      // Adicionar um título
+      document.body.appendChild(titulo);
+      // Adicionar o botão ao corpo da página
+      document.body.appendChild(botao);
+    </script>
+  </body>
+</html>
