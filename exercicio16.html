@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 16</title>
+  </head>
+  <body>
+    <div class="conteiner">
+      <h1>Calcular a redução do tempo de vida de um fumante</h1>
+      <h2>[DESAFIO]</h2>
+
+      <div class="margin-10px">
+        <label for="cigarros">QuaL a quantidade de cigarros fumados por dias:</label><input type="number" name="cigarros" id="cigarros" class="margin-left-10px"/>
+      </div>
+
+      <div class="margin-10px">
+        <label for="anos">Quantos anos já fumou:</label><input type="number" name="anos" id="anos" class="margin-left-10px" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">Quantos dias de vida um fumante perderá:</label><input type="text" id="resultado" readonly disabled class="margin-left-10px"/>
+      </div>
+      <button onclick="clicar()">Calcular</button>
+    </div>
+
+    <script>
+      //   16) [DESAFIO] Escreva um programa para calcular a redução do tempo de vida de um
+      //   fumante. Pergunte a quantidade de cigarros fumados por dias e quantos anos ele
+      //   já fumou. Considere que um fumante perde 10 min de vida a cada cigarro. Calcule
+      //   quantos dias de vida um fumante perderá e exiba o total em dias.
+
+      function clicar() {
+        let cigarros = Number(document.querySelector("#cigarros").value);
+        let anos = Number(document.querySelector("#anos").value);
+        let res = document.querySelector("#resultado");
+
+        let minutosPerdidos = cigarros * 10 * 365 * anos; // Minutos perdidos ao longo dos anos
+        let diasPerdidos = minutosPerdidos / (60 * 24); // Converter minutos em dias
+
+        res.value = diasPerdidos.toFixed(2); // Exibir o resultado corretamente
+        alert("🚫 Diga NÃO ao cigarro! 🚫\n\nFumar prejudica sua saúde, causa doenças graves e afeta quem está ao seu redor. Dê um passo em direção a uma vida mais saudável. 💙✨\n\nPare de fumar hoje! Seu futuro agradece. 💪🚭");
+      }
+    </script>
+  </body>
+</html>
