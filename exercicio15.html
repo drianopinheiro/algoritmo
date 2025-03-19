@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 15</title>
+  </head>
+  <body>
+    <div class="conteiner">
+      <h1>Salário de um funcionário</h1>
+      <h2>Valor a pagar pelo serviços:</h2>
+
+      <div class="margin-10px">
+        <label for="diastrabalhados">Quantidade de dias trabalhados em um mês:</label><input type="number" name="diastrabalhados" id="diastrabalhados" class="margin-left-10px"/>
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">Valor total a pagar</label><input type="text" id="resultado" readonly disabled class="margin-left-10px"/>
+      </div>
+      <button onclick="clicar()">Calcular</button>
+    </div>
+
+    <script>
+      // 15) Crie um programa que leia o número de dias trabalhados em um mês e mostre o 
+      // salário de um funcionário, sabendo que ele trabalha 8 horas por dia e ganha R$25 
+      // por hora trabalhada.  
+      function clicar (){
+        let diastrabalhados = Number(document.querySelector("#diastrabalhados").value);
+        let res = document.querySelector("#resultado");
+        let horas = diastrabalhados * 8; // Multiplica os dias por 8 horas diarias.
+        let salario = horas * 25; // Multiplica os valores das horas total por R$25.00
+        res.value = `R$ ${salario.toFixed(2)}`; // Exibe o resultado do salário de um funcionário
+        }
+    </script>
+  </body>
+</html>
