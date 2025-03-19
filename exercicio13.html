@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 13</title>
+  </head>
+  <body>
+    <script>
+      // 13) Faça um algoritmo que leia o salário de um funcionário, calcule e mostre 
+      // o seu novo salário, com 15% de aumento.
+      
+      let salario = Number(prompt("Digite o salário do funcionário:"));
+
+      function calcularAumento() {
+        let aumento = salario * 0.15; // Calcula o valor do aumento (15%)
+        let novoSalario = salario + aumento; // Calcula o novo salário
+
+        document.write(`<h1>Salário atual: <strong>R$ ${salario.toFixed(2)}</strong></h1>`);
+        document.write(`<h1>Aumento de 15%: <strong>R$ ${aumento.toFixed(2)}</strong></h1>`);
+        document.write(`<h1>Salário com aumento: <strong>R$ ${novoSalario.toFixed(2)}</strong></h1>`);
+      }
+
+      calcularAumento();
+    </script>
+  </body>
+</html>
