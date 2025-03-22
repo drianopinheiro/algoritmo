@@ -7,18 +7,32 @@
     <title>Exercícios de Algoritmo 17</title>
   </head>
   <body>
+    <div class="conteiner">
+      <h1>Calcular a velocidade de um carro.</h1>
+      <h2>Caso ultrapasse 80Km/h, exiba uma mensagem dizendo que o usuário foi multado.</h2>
+
+      <div class="margin-10px">
+        <label for="velocidade">QuaL a velocidade do carro:</label><input type="number" name="velocidade" id="velocidade" class="margin-left-10px"/>
+      </div>
+      <div class="margin-10px">
+        <label for="resultado">Resultado:</label><input type="text" id="resultado" readonly disabled class="margin-left-10px"/>
+      </div>
+      <button onclick="multa()">Calcular</button>
     <script>
       // 17) Escreva um programa que pergunte a velocidade de um carro. Caso ultrapasse
       // 80Km/h, exiba uma mensagem dizendo que o usuário foi multado. Nesse caso, exiba
       // o valor da multa, cobrando R$5 por cada Km acima da velocidade permitida.
-      let velocidade = Number(prompt("Qual é a velocidade do carro (em Km/h)?"));
+     function multa(){
+      let velocidade = Number(document.querySelector("#velocidade").value);
+      let res = document.querySelector("#resultado");
 
       if (velocidade > 80) {
-        let excesso = velocidade - 80;
-        let multa = excesso * 5;
-        alert(`Você foi multado! O valor da multa é de R$${multa.toFixed(2)}.`);
+       let excesso = velocidade - 80;
+       let multa = excesso * 5;
+       res.value = `Multado! R$${multa.toFixed(2)}.`;
       } else {
-        alert("Velocidade dentro do limite. Dirija com segurança!");
+         res.value = `Velocidade dentro do limite.`;
+      }
       }
     </script>
   </body>

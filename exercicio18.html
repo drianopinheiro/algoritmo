@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercícios de Algoritmo 18</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="conteiner">
+      <h1>Tribunal Superior Eleitoral (TSE) </h1>
+      <h2>No Brasil, o voto é obrigatório para cidadãos entre 18 e 70 anos</h2>
+
+      <div class="margin-10px">
+        <label for="ano">QuaL seu ano de nascimento:</label><input type="number" name="ano" id="ano" class="margin-left-10px"/>
+      </div>
+      <div class="margin-10px">
+        <label for="resultado">Resultado:</label><input type="text" id="resultado" readonly disabled class="margin-left-10px"/>
+      </div>
+      <button onclick="idade()">Calcular</button>
+    <script>
+      // 18) Faça um programa que leia o ano de nascimento de uma pessoa, calcule a idade
+      // dela e depois mostre se ela pode ou não votar.
+      function idade(){
+        let ano = Number(document.querySelector("#ano").value);
+        let res = document.querySelector("#resultado");
+        let idade = 2025 - ano;
+        if(idade > 18){
+          res.value = `${idade} anos, Pode votar!`
+
+        } else{
+          res.value = `${idade} anos, Não pode votar!`
+
+        }
+
+      }
+    </script>
+  </body>
+</html>
