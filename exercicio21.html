@@ -3,27 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Exercícios de Algoritmo 21</title>
   </head>
   <body>
+    <div class="conteiner">
+      <h2>Exercícios de Algoritmo 21</h2>
+      <h3>Faça um algoritmo que leia um determinado ano e mostre se ele é ou não BISSEXTO.</h3>
+
+      <div class="margin-10px">
+        <label for="ano">Digite o ano:</label>
+        <input type="number" id="ano" min="0" max="3000" step="1" class="margin-left-10px" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">Digite um numero inteiro:</label>
+        <input
+          type="text"
+          id="resultado"
+          readonly
+          disabled
+          class="margin-left-10px"
+        />
+      </div>
+
+      <button onclick="verificarAnoBissexto()">Calcular</button>
+    </div>
+
     <script>
-       //21) Faça um algoritmo que leia um determinado ano e mostre se ele é ou não BISSEXTO.  
-       
+      //21) Faça um algoritmo que leia um determinado ano e mostre se ele é ou não BISSEXTO.
+      
+
       // Função para verificar se o ano é bissexto
       function verificarAnoBissexto() {
-        // Lê o ano do usuário
-        let ano = parseInt(prompt("Digite um ano:"));
-
+        let ano = Number(document.querySelector("#ano").value);
+        let res = document.querySelector("#resultado");
         // Verifica se o ano é bissexto
         if ((ano % 4 === 0 && ano % 100 !== 0) || ano % 400 === 0) {
-          alert(ano + " é um ano BISSEXTO.");
+          res.value =  `${ano} é um ano BISSEXTO.`;
         } else {
-          alert(ano + " não é um ano BISSEXTO.");
+          res.value =  `${ano} não é um ano BISSEXTO.`;
         }
       }
-
-      // Chama a função
-      verificarAnoBissexto();
     </script>
   </body>
 </html>
