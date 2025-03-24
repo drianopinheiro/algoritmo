@@ -3,27 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Exercícios de Algoritmo 20</title>
   </head>
   <body>
+    <div class="conteiner">
+      <h2>Exercícios sobre número par ou ímpar</h2>
+      <h3>Identificação de um número par ou ímpar.</h3>
+
+      <div class="margin-10px">
+        <label for="numero">Digite um numero inteiro:</label>
+        <input type="number" id="numero" min="0" max="999999" step="1" class="margin-left-10px" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">A resposta certa para a sua consulta é:</label>
+        <input type="text" id="resultado" readonly disabled class="margin-left-10px" />
+      </div>
+
+      <button onclick="verificarParImpar()">Calcular</button>
+    </div>
+
     <script>
-      //20) Desenvolva um programa que leia um número inteiro e mostre se ele é PAR ou ÍMPAR. 
-
-      // Função para verificar se o número é par ou ímpar
-      function verificarParImpar() {
-        // Lê o número do usuário
-        let numero = parseInt(prompt("Digite um número inteiro:"));
-
+      //20) Desenvolva um programa que leia um número inteiro e mostre se ele é PAR ou 
+      //ÍMPAR.
+      function verificarParImpar(){
+        let numero = Number(document.querySelector("#numero").value);
+        let res = document.querySelector("#resultado");
         // Verifica se o número é par ou ímpar
         if (numero % 2 === 0) {
-          alert("O número " + numero + " é PAR.");
+          res.value = "O número " + numero + " é PAR.";
         } else {
-          alert("O número " + numero + " é ÍMPAR.");
+           res.value = "O número " + numero + " é ÍMPAR.";
         }
       }
-
-      // Chama a função
-      verificarParImpar();
     </script>
   </body>
 </html>
