@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercícios de Algoritmo 20</title>
+  </head>
+  <body>
+    <script>
+      //20) Desenvolva um programa que leia um número inteiro e mostre se ele é PAR ou ÍMPAR. 
+
+      // Função para verificar se o número é par ou ímpar
+      function verificarParImpar() {
+        // Lê o número do usuário
+        let numero = parseInt(prompt("Digite um número inteiro:"));
+
+        // Verifica se o número é par ou ímpar
+        if (numero % 2 === 0) {
+          alert("O número " + numero + " é PAR.");
+        } else {
+          alert("O número " + numero + " é ÍMPAR.");
+        }
+      }
+
+      // Chama a função
+      verificarParImpar();
+    </script>
+  </body>
+</html>
