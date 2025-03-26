@@ -44,7 +44,7 @@
         //     - Homens ganham 5% de desconto 
         //     - Mulheres ganham 13% de desconto
         function calcularDesconto() {
-            let nome = document.querySelector("#nome").value.trim();
+            let nome = document.querySelector("#nome").value.trim(); //trim() → Remove espaços em branco no início e no final da string.
             let sexo = document.querySelector("#sexo").value;
             let valorCompra = Number(document.querySelector("#valor").value);
             let res = document.querySelector("#resultado");
