@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 24</title>
+  </head>
+  <body>
+    <div class="conteiner">
+      <h2>Exercícios de Algoritmo 24</h2>
+      <h3>Crie um algoritmo que solicite a distância da viagem e calcule o preço da passagem: R$0,50 por km até 200 km e R$0,45 para distâncias maiores.</h3>
+
+      <div class="margin-10px">
+        <label for="km">Digite a distância da viagem em Km:</label>
+        <input
+          type="number"
+          id="km"
+          min="0"
+          step="1"
+          class="margin-left-10px"
+        />
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">Preço da passagem:</label>
+        <input
+          type="text"
+          id="resultado"
+          readonly
+          disabled
+          class="margin-left-10px"
+        />
+      </div>
+
+      <button onclick="passagem()">Calcular</button>
+    </div>
+
+    <script>
+      //   24) Faça um algoritmo que pergunte a distância que um passageiro deseja
+      //   percorrer em Km. Calcule o preço da passagem, cobrando R$0.50 por Km para
+      //   viagens até 200Km e R$0.45 para viagens mais longas.
+
+      function passagem() {
+        let km = Number(document.querySelector("#km").value);
+        let res = document.querySelector("#resultado");
+
+        let precoPassagem = km <= 200 ? km * 0.5 : km * 0.45;
+
+        res.value = `R$ ${precoPassagem.toFixed(2)}`;
+      }
+    </script>
+  </body>
+</html>
