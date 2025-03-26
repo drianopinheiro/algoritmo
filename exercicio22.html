@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercícios de Algoritmo 22</title>
+</head>
+<body>
+    <div class="conteiner">
+        <h2>Exercício de Algoritmo 22</h2>
+        <h3>Informe seu ano de nascimento para verificar sua situação em relação ao alistamento militar.</h3>
+
+        <div class="margin-10px">
+            <label for="ano">Ano de nascimento:</label>
+            <input type="number" id="ano" min="1900" max="2100" step="1" class="margin-left-10px">
+        </div>
+
+        <div class="margin-10px">
+            <label for="resultado">Situação:</label>
+            <input type="text" id="resultado" readonly disabled class="margin-left-10px">
+        </div>
+
+        <button onclick="alistamentoMilitar()">Calcular</button>
+    </div>
+
+    <script>
+        function alistamentoMilitar() {
+            let anoNascimento = Number(document.querySelector("#ano").value);
+            let res = document.querySelector("#resultado");
+            let anoAtual = new Date().getFullYear();
+            let idade = anoAtual - anoNascimento;
+
+            if (idade < 18) {
+                let anosFaltam = 18 - idade;
+                res.value = `Ainda faltam ${anosFaltam} ano(s) para o alistamento.`;
+            } else if (idade === 18) {
+                res.value = "Este é o ano do seu alistamento!";
+            } else {
+                let anosPassaram = idade - 18;
+                res.value = `Já passaram ${anosPassaram} ano(s) do alistamento.`;
+            }
+        }
+    </script>
+</body>
+</html>
+
