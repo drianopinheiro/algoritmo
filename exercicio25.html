@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 25</title>
+  </head>
+  <body>
+    <div class="conteiner">
+      <h2>Titulo do exercícios</h2>
+      <h3>Exercícios:</h3>
+
+      <div class="margin-10px">
+        <label for="primeiro">Digite o comprimento do primeiro segmento:</label>
+        <input type="number" id="primeiro" min="0" step="1" class="margin-left-10px" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="segundo">Digite o comprimento do segundo segmento: </label>
+        <input type="number" id="segundo" min="0" step="1" class="margin-left-10px" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="terceiro">Digite o comprimento do terceiro segmento: </label>
+        <input type="number" id="terceiro" min="0" step="1" class="margin-left-10px" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">Os segmentos informados:</label>
+        <input type="text" id="resultado" readonly disabled class="margin-left-10px" />
+      </div>
+
+      <button onclick="verificar()">Calcular</button>
+    </div>
+
+    <script>
+    //   25) [DESAFIO] Crie um programa que leia o tamanho de três segmentos de reta. 
+    //   Analise seus comprimentos e diga se é possível formar um triângulo com essas 
+    //   retas. Matematicamente, para três segmentos formarem um triângulo, o comprimento 
+    //   de cada lado deve ser menor que a soma dos outros dois.
+      function verificar(){
+        let primeiro = Number(document.querySelector('#primeiro').value);
+        let segundo = Number(document.querySelector('#segundo').value);
+        let terceiro = Number(document.querySelector('#terceiro').value);
+        let res = document.querySelector("#resultado");
+
+        
+        if((primeiro < segundo + terceiro) && (segundo < primeiro + terceiro) && (terceiro < primeiro + segundo)){
+            res.value = ` FORMAM um triângulo`;
+
+        } else{
+            res.value = ` NÃO FORMAM um triângulo`;
+
+        }
+      }
+    </script>
+  </body>
+</html>
