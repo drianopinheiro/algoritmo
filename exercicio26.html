@@ -1,14 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Exercícios de Algoritmo 26</title>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="conteiner">
+      <h2>Comparação de Números</h2>
+      <h3>Exercícios de Algoritmo 26</h3>
+
+      <div class="margin-10px">
+        <label for="numero1">Digite o primeiro número: </label>
+        <input type="number" id="numero1" min="0" step="1" class="margin-left-10px" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="numero2">Digite o segundo número: </label>
+        <input type="number" id="numero2" min="0" step="1" class="margin-left-10px" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">Comparação dos números:</label>
+        <input type="text" id="resultado" readonly disabled class="margin-left-10px" />
+      </div>
+
+      <button onclick="compararNumeros()">Calcular</button>
+    </div>
+
     <script>
-        // 26) Escreva um algoritmo que leia dois números inteiros e compare-os, mostrando 
-        // na tela uma das mensagens abaixo: - O primeiro valor é o maior - O segundo valor é o maior - Não existe valor maior, os dois são iguais 
+    //    26) Escreva um algoritmo que leia dois números inteiros e compare-os, mostrando 
+    //    na tela uma das mensagens abaixo: - O primeiro valor é o maior - O segundo valor é o maior - Não existe valor maior, os dois são iguais  
+      function compararNumeros() {
+        let numero1 = Number(document.querySelector("#numero1").value);
+        let numero2 = Number(document.querySelector("#numero2").value);
+        let res = document.querySelector("#resultado");
+
+        if (numero1 > numero2) {
+          res.value = "O primeiro valor é o maior";
+        } else if (numero1 < numero2) {
+          res.value = "O segundo valor é o maior";
+        } else {
+          res.value = "Não existe valor maior, os dois são iguais";
+        }
+      }
     </script>
-</body>
+  </body>
 </html>
+
