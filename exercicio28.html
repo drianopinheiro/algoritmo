@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 28</title>
+  </head>
+  <body>
+    <div class="conteiner">
+      <h2>Calculadora de Área de Terreno</h2>
+      <h3>Exercícios de Algoritmo 28</h3>
+
+      <div class="margin-10px">
+        <label for="largura">Digite a largura (m): </label>
+        <input type="number" id="largura" min="0" step="0.1" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="comprimento">Digite o comprimento (m): </label>
+        <input type="number" id="comprimento" min="0" step="0.1" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">Classificação do terreno:</label>
+        <input type="text" id="resultado" readonly disabled />
+      </div>
+
+      <button onclick="calcularTerreno()">Calcular Área</button>
+    </div>
+
+    <script>
+      function calcularTerreno() {
+        let largura = Number(document.querySelector("#largura").value);
+        let comprimento = Number(document.querySelector("#comprimento").value);
+        let res = document.querySelector("#resultado");
+
+        if (isNaN(largura) || isNaN(comprimento) || largura <= 0 || comprimento <= 0) {
+          res.value = "Preencha valores válidos!";
+          return;
+        }
+
+        let area = largura * comprimento;
+
+        if (area < 100) {
+          res.value = "TERRENO POPULAR";
+        } else if (area <= 500) {
+          res.value = "TERRENO MASTER";
+        } else {
+          res.value = "TERRENO VIP";
+        }
+      }
+    </script>
+  </body>
+</html>
+
