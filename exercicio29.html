@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 29</title>
+  </head>
+  <body>
+    <div class="conteiner">
+      <h2>Calculadora de Reajuste Salarial</h2>
+      <h3>Exercícios de Algoritmo 29</h3>
+
+      <div class="margin-10px">
+        <label for="nome">Nome do funcionário: </label>
+        <input type="text" id="nome" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="salario">Salário atual (R$): </label>
+        <input type="number" id="salario" min="0" step="0.01" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="anos">Anos na empresa: </label>
+        <input type="number" id="anos" min="0" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">Novo salário:</label>
+        <input type="text" id="resultado" readonly disabled />
+      </div>
+
+      <button onclick="calcularReajuste()">Calcular Reajuste</button>
+    </div>
+
+    <script>
+      function calcularReajuste() {
+        let nome = document.querySelector("#nome").value.trim();
+        let salario = Number(document.querySelector("#salario").value);
+        let anos = Number(document.querySelector("#anos").value);
+        let res = document.querySelector("#resultado");
+
+        if (!nome || isNaN(salario) || isNaN(anos) || salario <= 0 || anos < 0) {
+          res.value = "Preencha valores válidos!";
+          return;
+        }
+
+        let percentual;
+        if (anos < 3) {
+          percentual = 0.03;
+        } else if (anos < 10) {
+          percentual = 0.125;
+        } else {
+          percentual = 0.20;
+        }
+
+        let novoSalario = salario + salario * percentual;
+        res.value = `R$ ${novoSalario.toFixed(2)}`;
+      }
+    </script>
+  </body>
+</html>
