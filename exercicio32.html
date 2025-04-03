@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 32</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Tente adivinhar o número sorteado!</h2>
+      <h3>Exercícios de Algoritmo 32</h3>
+
+      <div class="margin-10px">
+        <label for="numero">Escolha um número entre 1 e 5:</label>
+        <select name="numero" id="numero"  class="margin-left-10px">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="margin-10px">
+        <label for="computador">Número sorteado:</label>
+        <input
+          type="text"
+          id="computador"
+          readonly
+          disabled
+          class="margin-left-10px"
+        />
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">Resultado do jogo:</label>
+        <input
+          type="text"
+          id="resultado"
+          readonly
+          disabled
+          class="margin-left-10px"
+        />
+      </div>
+
+      <button onclick="sortear()">Sortear</button>
+    </div>
+
+    <script>
+      //   32) [DESAFIO] Crie um jogo onde o computador vai sortear um número entre 1 e 5 o
+      //   jogador vai tentar descobrir qual foi o valor sorteado.
+      function sortear() {
+        let opcoes = ["0", "1", "2", "3", "4", "5"];
+        let escolhaUsuario = Number(document.getElementById("numero").value);
+        let escolhaComputador = Math.floor(Math.random() * 5) + 1;
+        let res = document.getElementById("resultado");
+        let comp = document.getElementById("computador");
+
+        comp.value = escolhaComputador;
+
+        if (escolhaUsuario === escolhaComputador){
+          res.value = "Você acertou!";
+          res.style.backgroundColor = "lightgreen";  // Define o fundo como verde
+          res.style.color = "black"; // Mantém o texto legível
+        } else {
+          res.value = "Você errou!";
+          res.style.backgroundColor = "tomato";  // Define o fundo como vermelho
+          res.style.color = "white"; // Mantém o texto legível
+        }
+      }
+    </script>
+  </body>
+</html>
