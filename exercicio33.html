@@ -8,53 +8,79 @@
   </head>
   <body>
     <div class="container">
-      <h2>Aprovar ou não o empréstimo bancário</h2>
+      <h2>Aprovação de Empréstimo Bancário</h2>
       <h3>Exercícios de Algoritmo 33</h3>
 
       <div class="margin-10px">
-        <label for="valorCasa">"Digite o valor da casa (R$):</label>
-        <input type="number" name="valorCasa" id="valorCasa" min="0" max="1"  class="margin-left-10px" />
+        <label for="valorCasa">Digite o valor da casa (R$):</label>
+        <input
+          type="number"
+          id="valorCasa"
+          min="1"
+          step="1"
+          class="margin-left-10px"
+        />
       </div>
 
       <div class="margin-10px">
         <label for="salarioMensal">Digite seu salário mensal (R$):</label>
-        <input type="number" name="salarioMensal" id="salarioMensal" min="0" max="1" class="margin-left-10px" />
+        <input
+          type="number"
+          id="salarioMensal"
+          min="1"
+          step="1"
+          class="margin-left-10px"
+        />
       </div>
 
       <div class="margin-10px">
         <label for="prazo">Escolha o prazo de pagamento (anos):</label>
-        <input type="number" id="prazo" name="prazo" min="0" max="1" class="margin-left-10px" />
+        <input
+          type="number"
+          id="prazo"
+          min="1"
+          step="1"
+          class="margin-left-10px"
+        />
       </div>
 
       <div class="margin-10px">
         <label for="resultado">Status do Empréstimo:</label>
-        <input type="text" id="resultado" readonly disabled class="margin-left-10px" />
+        <input
+          type="text"
+          id="resultado"
+          readonly
+          disabled
+          class="margin-left-10px"
+        />
       </div>
 
       <button onclick="calcular()">Calcular</button>
     </div>
 
     <script>
-    //   33) Escreva um programa para aprovar ou não o empréstimo bancário para a compra 
-    //   de uma casa. O programa vai perguntar o valor da casa, o salário do comprador e 
-    //   em quantos anos ele vai pagar. Calcule o valor da prestação mensal, sabendo que 
-    //   ela não pode exceder 30% do salário ou então o empréstimo será negado. 
-
-      function calcular(){
-        let valorCasa = document.querySelector("#valorCasa");
-        let salarioMensal = document.querySelector("#salarioMensal");
-        let prazo = document.querySelector("#prazo");
+      function calcular() {
+        let valorCasa = Number(document.querySelector("#valorCasa").value);
+        let salarioMensal = Number(
+          document.querySelector("#salarioMensal").value
+        );
+        let prazo = Number(document.querySelector("#prazo").value);
         let res = document.querySelector("#resultado");
 
-        
+        // Verificar se os valores são válidos
+        if (valorCasa <= 0 || salarioMensal <= 0 || prazo <= 0) {
+          res.value = "Preencha todos os campos corretamente!";
+          return;
+        }
 
+        let prestacaoMensal = valorCasa / (prazo * 12); // Divide o valor total pelo número de meses.
+        let limiteSalario = salarioMensal * 0.3; // 30% do salário
 
-
-
-
-
-
-
+        if (prestacaoMensal <= limiteSalario) {
+          res.value = "Empréstimo APROVADO!";
+        } else {
+          res.value = "Empréstimo NEGADO!";
+        }
       }
     </script>
   </body>
