@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 34</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Calcular IMC</h2>
+      <h3>Exercícios de Algoritmo 34</h3>
+
+      <div class="margin-10px">
+        <label for="altura">Digite sua altura (m):</label>
+        <input
+          type="number"
+          name="altura"
+          id="altura"
+          min="0.1"
+          step="0.01"
+          class="margin-left-10px"
+        />
+      </div>
+
+      <div class="margin-10px">
+        <label for="peso">Digite seu peso (kg):</label>
+        <input
+          type="number"
+          id="peso"
+          name="peso"
+          min="1"
+          step="0.1"
+          class="margin-left-10px"
+        />
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">Resultado:</label>
+        <input
+          type="text"
+          id="resultado"
+          readonly
+          disabled
+          class="margin-left-10px"
+        />
+      </div>
+
+      <button onclick="calcularImc()">Calcular IMC</button>
+    </div>
+
+    <script>
+        // 34) O Índice de Massa Corpórea (IMC) é um valor calculado baseado na altura e no 
+        // peso de uma pessoa. De acordo com o valor do IMC, podemos classificar o 
+        // indivíduo dentro de certas faixas. - abaixo de 18.5: Abaixo do peso - entre 18.5 e 25: Peso ideal - entre 25 e 30: Sobrepeso - entre 30 e 40: Obesidade - acima de 40: Obseidade mórbida 
+        // Obs: O IMC é calculado pela expressão peso/altura² (peso dividido pelo quadrado da altura)
+
+      function calcularImc() {
+        let altura = parseFloat(document.querySelector("#altura").value);
+        let peso = parseFloat(document.querySelector("#peso").value);
+        let res = document.querySelector("#resultado");
+
+        if (isNaN(altura) || isNaN(peso) || altura <= 0 || peso <= 0) {
+          res.value = "Valores inválidos!";
+          return;
+        }
+
+        let imc = peso / (altura * altura);
+        let classificacao = "";
+
+        if (imc < 18.5) {
+          classificacao = "Abaixo do peso";
+        } else if (imc < 25) {
+          classificacao = "Peso ideal";
+        } else if (imc < 30) {
+          classificacao = "Sobrepeso";
+        } else if (imc < 40) {
+          classificacao = "Obesidade";
+        } else {
+          classificacao = "Obesidade mórbida";
+        }
+
+        res.value = `IMC: ${imc.toFixed(2)} - ${classificacao}`;
+      }
+    </script>
+  </body>
+</html>
+
