@@ -1,11 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 35</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Calcular Aluguel de Carro</h2>
+      <h3>Exercícios de Algoritmo 35</h3>
+
+      <div class="margin-10px">
+        <label for="tipo">Tipo de carro:</label>
+        <select id="tipo" class="margin-left-10px">
+          <option value="popular">Popular</option>
+          <option value="luxo">Luxo</option>
+        </select>
+      </div>
+
+      <div class="margin-10px">
+        <label for="dias">Dias de aluguel:</label>
+        <input type="number" id="dias" min="1" class="margin-left-10px" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="km">Km percorridos:</label>
+        <input type="number" id="km" min="0" class="margin-left-10px" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">Valor a pagar:</label>
+        <input
+          type="text"
+          id="resultado"
+          readonly
+          disabled
+          class="margin-left-10px"
+        />
+      </div>
+
+      <button onclick="calcularAluguel()">Calcular Valor</button>
+    </div>
+
+    <script>
+    //   35) Uma empresa de aluguel de carros precisa cobrar pelos seus serviços. O
+    //   aluguel de um carro custa R$90 por dia para carro popular e R$150 por dia para
+    //   carro de luxo. Além disso, o cliente paga por Km percorrido. Faça um programa
+    //   que leia o tipo de carro alugado (popular ou luxo), quantos dias de aluguel e
+    //   quantos Km foram percorridos. No final mostre o preço a ser pago de acordo com a
+    //   tabela a seguir: - Carros populares (aluguel de R$90 por dia)
+    //   - Até 100Km percorridos: R$0,20 por Km
+    //   - Acima de 100Km percorridos: R$0,10 por Km
+    //   - Carros de luxo (aluguel de R$150 por dia)
+    //   - Até 200Km percorridos: R$0,30 por Km
+    //   - Acima de 200Km percorridos: R$0,25 por Km
+            function calcularAluguel() {
+              let tipo = document.querySelector("#tipo").value;
+              let dias = parseInt(document.querySelector("#dias").value);
+              let km = parseFloat(document.querySelector("#km").value);
+              let res = document.querySelector("#resultado");
+
+              if (isNaN(dias) || isNaN(km) || dias <= 0 || km < 0) {
+                res.value = "Valores inválidos!";
+                return;
+              }
+
+              let precoDia, precoKm;
+
+              if (tipo === "popular") {
+                precoDia = 90;
+                precoKm = km <= 100 ? 0.20 : 0.10;
+              } else if (tipo === "luxo") {
+                precoDia = 150;
+                precoKm = km <= 200 ? 0.30 : 0.25;
+              }
+
+              let total = (precoDia * dias) + (precoKm * km);
+              res.value = `R$ ${total.toFixed(2)}`;
+            }
+    </script>
+  </body>
 </html>
