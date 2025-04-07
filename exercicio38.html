@@ -1,11 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 38</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Contagem de 6 a 11</h2>
+      <h3>Exercícios de Algoritmo 38</h3>
+
+      <div class="margin-10px">
+        <label for="resultado">Resultado:</label>
+        <input
+          type="text"
+          id="resultado"
+          readonly
+          disabled
+          class="margin-left-10px"
+        />
+      </div>
+
+      <button onclick="mostrarContagem()">Mostrar Contagem</button>
+    </div>
+
+    <script>
+      // 38) Escreva um programa que mostre na tela a seguinte contagem:   6 7 8 9 10 11 Acabou!
+      function mostrarContagem() {
+        let res = document.querySelector("#resultado");
+        let contagem = "";
+
+        for (let i = 6; i <= 11; i++) {
+          contagem += i + " ";
+        }
+
+        contagem += "Acabou!";
+        res.value = contagem;
+      }
+    </script>
+  </body>
 </html>
