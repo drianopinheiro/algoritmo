@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 39</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Contagem de 10 a 3</h2>
+      <h3>Exercícios de Algoritmo 39</h3>
+
+      <div class="margin-10px">
+        <label for="resultado">Resultado:</label>
+        <input
+          type="text"
+          id="resultado"
+          readonly
+          disabled
+          class="margin-left-10px"
+        />
+      </div>
+
+      <button onclick="mostrarContagem()">Mostrar Contagem</button>
+    </div>
+
+    <script>
+      // 39) Faça um algoritmo que mostre na tela a seguinte contagem:
+      // 10 9 8 7 6 5 4 3 Acabou!
+      function mostrarContagem() {
+        let res = document.querySelector("#resultado");
+        let contagem = "";
+
+        for (let i = 10; i >= 3; i--) {
+          contagem += i + " ";
+        }
+
+        contagem += "Acabou!";
+        res.value = contagem;
+      }
+    </script>
+  </body>
+</html>
