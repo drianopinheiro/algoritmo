@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 41</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Contagem de 100 a 0</h2>
+      <h3>Exercícios de Algoritmo 41</h3>
+
+      <div class="margin-10px">
+        <label for="resultado">Resultado:</label>
+        <input
+          type="text"
+          id="resultado"
+          readonly
+          disabled
+          class="margin-left-10px"
+        />
+      </div>
+
+      <button onclick="mostrarContagem()">Mostrar Contagem</button>
+    </div>
+
+    <script>
+      // 41) Desenvolva um programa que mostre na tela a seguinte contagem:
+      // 100 95 90 85 80 ... 0 Acabou!
+      function mostrarContagem() {
+        let res = document.querySelector("#resultado");
+        let contagem = "";
+
+        for (let i = 100; i >= 0; i -= 5) {
+          contagem += i + " ";
+        }
+
+        contagem += "Acabou!";
+        res.value = contagem;
+      }
+    </script>
+  </body>
+</html>
