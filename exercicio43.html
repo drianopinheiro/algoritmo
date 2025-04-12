@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 43</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Contagem Regressiva com destaque nos divisíveis por 4</h2>
+      <h3>Exercícios de Algoritmo 43</h3>
+
+      <div class="margin-10px">
+        <label for="resultado">Contagem:</label>
+        <input
+          type="text"
+          id="resultado"
+          readonly
+          disabled
+          class="margin-left-10px"
+        />
+      </div>
+
+      <button onclick="contagemRegressiva()">Mostrar Contagem</button>
+    </div>
+
+    <script>
+      // 43) Desenvolva um algoritmo que mostre uma contagem regressiva de 30 até 1, 
+      // marcando os números que forem divisíveis por 4, exatamente como mostrado abaixo: 
+      // 30 29 [28] 27 26 25 [24] 23 22 21 [20] 19 18 17 [16]...
+
+      function contagemRegressiva() {
+        let contagem = "";
+
+        for (let i = 30; i >= 1; i--) {
+          if (i % 4 === 0) {
+            contagem += `[${i}] `;
+          } else {
+            contagem += i + " ";
+          }
+        }
+
+        const res = document.querySelector("#resultado");
+        res.value = contagem.trim();
+      }
+    </script>
+  </body>
+</html>
