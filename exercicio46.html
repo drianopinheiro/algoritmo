@@ -1,11 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 46</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Soma de números pares de 6 até 100</h2>
+      <h3>Exercícios de Algoritmo 46</h3>
+
+      <div class="margin-10px">
+        <label for="resultado">Resultado da soma:</label>
+        <input
+          type="text"
+          id="resultado"
+          readonly
+          disabled
+          class="margin-left-10px"
+        />
+      </div>
+
+      <button onclick="calcularSoma()">Calcular Soma</button>
+    </div>
+
+    <script>
+      // 46) Crie um programa que calcule e mostre na tela o resultado da soma entre 
+      // 6 + 8 + 10 + 12 + 14 + ... + 98 + 100.
+
+      function calcularSoma() {
+        let soma = 0;
+
+        for (let i = 6; i <= 100; i += 2) {
+          soma += i;
+        }
+
+        const res = document.querySelector("#resultado");
+        res.value = `A soma é ${soma}`;
+      }
+    </script>
+  </body>
 </html>
