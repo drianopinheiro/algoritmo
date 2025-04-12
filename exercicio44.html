@@ -1,11 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 44</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Contagem com incremento</h2>
+      <h3>Exercícios de Algoritmo 44</h3>
+
+      <div class="margin-10px">
+        <label for="inicio">Valor inicial:</label>
+        <input type="number" id="inicio" class="margin-left-10px" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="fim">Valor final:</label>
+        <input type="number" id="fim" class="margin-left-10px" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="passo">Incremento:</label>
+        <input type="number" id="passo" class="margin-left-10px" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">Contagem:</label>
+        <input
+          type="text"
+          id="resultado"
+          readonly
+          disabled
+          class="margin-left-10px"
+        />
+      </div>
+
+      <button onclick="mostrarContagem()">Mostrar Contagem</button>
+    </div>
+
+    <script>
+      // 44) Crie um algoritmo que leia o valor inicial da contagem, o valor final e o 
+      // incremento, mostrando em seguida todos os valores no intervalo: 
+      // Ex: Digite o primeiro Valor: 3 
+      // Digite o último Valor: 10 
+      // Digite o incremento: 2 
+      // Contagem: 3 5 7 9 Acabou!
+
+      function mostrarContagem() {
+        const inicio = Number(document.querySelector("#inicio").value);
+        const fim = Number(document.querySelector("#fim").value);
+        const passo = Number(document.querySelector("#passo").value);
+        const res = document.querySelector("#resultado");
+
+        if (isNaN(inicio) || isNaN(fim) || isNaN(passo) || passo <= 0) {
+          res.value = "Por favor, preencha todos os campos corretamente.";
+          return;
+        }
+
+        let contagem = "";
+
+        for (let i = inicio; i <= fim; i += passo) {
+          contagem += i + " ";
+        }
+
+        contagem += "Acabou!";
+        res.value = contagem;
+      }
+    </script>
+  </body>
 </html>
