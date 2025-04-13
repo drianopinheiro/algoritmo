@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 51</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Maior e menor preço</h2>
+      <h3>Exercícios de Algoritmo 51</h3>
+
+      <div class="margin-10px">
+        <label>Digite o preço de 8 produtos:</label><br />
+        <input type="number" class="preco margin-top-5px" step="0.01" /><br />
+        <input type="number" class="preco margin-top-5px" step="0.01" /><br />
+        <input type="number" class="preco margin-top-5px" step="0.01" /><br />
+        <input type="number" class="preco margin-top-5px" step="0.01" /><br />
+        <input type="number" class="preco margin-top-5px" step="0.01" /><br />
+        <input type="number" class="preco margin-top-5px" step="0.01" /><br />
+        <input type="number" class="preco margin-top-5px" step="0.01" /><br />
+        <input type="number" class="preco margin-top-5px" step="0.01" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">Resultado:</label>
+        <input
+          type="text"
+          id="resultado"
+          readonly
+          disabled
+          class="margin-left-10px"
+        />
+      </div>
+
+      <button onclick="verificarPrecos()">Verificar Preços</button>
+    </div>
+
+    <script>
+      // 51) Faça um aplicativo que leia o preço de 8 produtos. No final, mostre na tela 
+      // qual foi o maior e qual foi o menor preço digitados.
+
+      function verificarPrecos() {
+        const inputs = document.querySelectorAll(".preco");
+        let maior = null;
+        let menor = null;
+        let preenchido = true;
+
+        inputs.forEach((input) => {
+          const valor = parseFloat(input.value);
+          if (isNaN(valor)) {
+            preenchido = false;
+          } else {
+            if (maior === null || valor > maior) {
+              maior = valor;
+            }
+            if (menor === null || valor < menor) {
+              menor = valor;
+            }
+          }
+        });
+
+        const res = document.querySelector("#resultado");
+
+        if (!preenchido) {
+          res.value = "Preencha todos os campos corretamente.";
+        } else {
+          res.value = `Maior preço: R$ ${maior.toFixed(2)} | Menor preço: R$ ${menor.toFixed(2)}`;
+        }
+      }
+    </script>
+  </body>
+</html>
