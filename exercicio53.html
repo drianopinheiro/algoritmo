@@ -99,4 +99,40 @@
 
         for (let i = 0; i < 5; i++) {
           const idade = Number(idades[i].value);
-          const sexo = sexos[i].
+          const sexo = sexos[i].value;
+
+          if (isNaN(idade) || idade < 0 || (sexo !== "M" && sexo !== "F")) {
+            preenchido = false;
+            break;
+          }
+
+          totalIdade += idade;
+
+          if (sexo === "M") {
+            totalHomens++;
+            idadeHomens += idade;
+          } else if (sexo === "F") {
+            totalMulheres++;
+            if (idade > 20) mulheresMais20++;
+          }
+        }
+
+        const res = document.querySelector("#resultado");
+
+        if (!preenchido) {
+          res.value = "Preencha todos os campos corretamente.";
+        } else {
+          const mediaGrupo = totalIdade / 5;
+          const mediaHomens = totalHomens > 0 ? (idadeHomens / totalHomens).toFixed(1) : "N/A";
+
+          res.value =
+            `Homens cadastrados: ${totalHomens}\n` +
+            `Mulheres cadastradas: ${totalMulheres}\n` +
+            `Média de idade do grupo: ${mediaGrupo.toFixed(1)} anos\n` +
+            `Média de idade dos homens: ${mediaHomens} anos\n` +
+            `Mulheres com mais de 20 anos: ${mulheresMais20}`;
+        }
+      }
+    </script>
+  </body>
+</html>
