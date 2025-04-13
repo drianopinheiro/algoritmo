@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 53</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Análise de Pessoas</h2>
+      <h3>Exercícios de Algoritmo 53</h3>
+
+      <div class="margin-10px">
+        <label>Preencha a idade e o sexo de 5 pessoas:</label><br />
+
+        <!-- Pessoa 1 -->
+        <div class="margin-top-5px">
+          Pessoa 1:
+          <input type="number" class="idade" placeholder="Idade" min="0" />
+          <select class="sexo">
+            <option value="">Sexo</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+          </select>
+        </div>
+
+        <!-- Pessoa 2 a 5 -->
+        <div class="margin-top-5px">Pessoa 2:
+          <input type="number" class="idade" placeholder="Idade" min="0" />
+          <select class="sexo">
+            <option value="">Sexo</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+          </select>
+        </div>
+
+        <div class="margin-top-5px">Pessoa 3:
+          <input type="number" class="idade" placeholder="Idade" min="0" />
+          <select class="sexo">
+            <option value="">Sexo</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+          </select>
+        </div>
+
+        <div class="margin-top-5px">Pessoa 4:
+          <input type="number" class="idade" placeholder="Idade" min="0" />
+          <select class="sexo">
+            <option value="">Sexo</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+          </select>
+        </div>
+
+        <div class="margin-top-5px">Pessoa 5:
+          <input type="number" class="idade" placeholder="Idade" min="0" />
+          <select class="sexo">
+            <option value="">Sexo</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">Resultado:</label><br />
+        <textarea
+          id="resultado"
+          readonly
+          disabled
+          class="margin-left-10px"
+          rows="7"
+          cols="40"
+        ></textarea>
+      </div>
+
+      <button onclick="analisarPessoas()">Analisar Grupo</button>
+    </div>
+
+    <script>
+      // 53) Faça um programa que leia a idade e o sexo de 5 pessoas, mostrando no final: 
+      // a) Quantos homens foram cadastrados 
+      // b) Quantas mulheres foram cadastradas 
+      // c) A média de idade do grupo 
+      // d) A média de idade dos homens 
+      // e) Quantas mulheres tem mais de 20 anos
+
+      function analisarPessoas() {
+        const idades = document.querySelectorAll(".idade");
+        const sexos = document.querySelectorAll(".sexo");
+
+        let totalIdade = 0;
+        let totalHomens = 0;
+        let totalMulheres = 0;
+        let idadeHomens = 0;
+        let mulheresMais20 = 0;
+        let preenchido = true;
+
+        for (let i = 0; i < 5; i++) {
+          const idade = Number(idades[i].value);
+          const sexo = sexos[i].
