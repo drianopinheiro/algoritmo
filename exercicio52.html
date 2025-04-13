@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 52</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Análise de Idades</h2>
+      <h3>Exercícios de Algoritmo 52</h3>
+
+      <div class="margin-10px">
+        <label>Digite a idade de 10 pessoas:</label><br />
+        <input type="number" class="idade margin-top-5px" min="0" /><br />
+        <input type="number" class="idade margin-top-5px" min="0" /><br />
+        <input type="number" class="idade margin-top-5px" min="0" /><br />
+        <input type="number" class="idade margin-top-5px" min="0" /><br />
+        <input type="number" class="idade margin-top-5px" min="0" /><br />
+        <input type="number" class="idade margin-top-5px" min="0" /><br />
+        <input type="number" class="idade margin-top-5px" min="0" /><br />
+        <input type="number" class="idade margin-top-5px" min="0" /><br />
+        <input type="number" class="idade margin-top-5px" min="0" /><br />
+        <input type="number" class="idade margin-top-5px" min="0" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">Resultado:</label><br />
+        <textarea
+          id="resultado"
+          readonly
+          disabled
+          class="margin-left-10px"
+          rows="6"
+          cols="40"
+        ></textarea>
+      </div>
+
+      <button onclick="analisarIdades()">Analisar Idades</button>
+    </div>
+
+    <script>
+      // 52) Crie um algoritmo que leia a idade de 10 pessoas, mostrando no final: 
+      // a) Qual é a média de idade do grupo 
+      // b) Quantas pessoas tem mais de 18 anos 
+      // c) Quantas pessoas tem menos de 5 anos 
+      // d) Qual foi a maior idade lida
+
+      function analisarIdades() {
+        const inputs = document.querySelectorAll(".idade");
+        let soma = 0;
+        let maisDe18 = 0;
+        let menosDe5 = 0;
+        let maiorIdade = null;
+        let preenchido = true;
+
+        inputs.forEach((input) => {
+          const idade = Number(input.value);
+          if (isNaN(idade) || idade < 0) {
+            preenchido = false;
+          } else {
+            soma += idade;
+            if (idade > 18) maisDe18++;
+            if (idade < 5) menosDe5++;
+            if (maiorIdade === null || idade > maiorIdade) {
+              maiorIdade = idade;
+            }
+          }
+        });
+
+        const res = document.querySelector("#resultado");
+
+        if (!preenchido) {
+          res.value = "Preencha todas as idades corretamente.";
+        } else {
+          const media = soma / inputs.length;
+          res.value =
+            `Média de idades: ${media.toFixed(1)} anos\n` +
+            `Mais de 18 anos: ${maisDe18} pessoas\n` +
+            `Menos de 5 anos: ${menosDe5} pessoas\n` +
+            `Maior idade: ${maiorIdade} anos`;
+        }
+      }
+    </script>
+  </body>
+</html>
