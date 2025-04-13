@@ -1,1 +1,61 @@
-exercicio
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 50</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Sorteio e análise de números</h2>
+      <h3>Exercícios de Algoritmo 50</h3>
+
+      <div class="margin-10px">
+        <label for="resultado">Resultado:</label><br />
+        <textarea
+          id="resultado"
+          readonly
+          disabled
+          class="margin-left-10px"
+          rows="6"
+          cols="40"
+        ></textarea>
+      </div>
+
+      <button onclick="sortearNumeros()">Sortear Números</button>
+    </div>
+
+    <script>
+      // 50) Desenvolva um programa que faça o sorteio de 20 números entre 0 e 10 e 
+      // mostre na tela: 
+      // a) Quais foram os números sorteados 
+      // b) Quantos números estão acima de 5 
+      // c) Quantos números são divisíveis por 3
+
+      function sortearNumeros() {
+        const sorteados = [];
+        let acimaDeCinco = 0;
+        let divisiveisPorTres = 0;
+
+        for (let i = 0; i < 20; i++) {
+          const numero = Math.floor(Math.random() * 11); // entre 0 e 10
+          sorteados.push(numero);
+
+          if (numero > 5) {
+            acimaDeCinco++;
+          }
+
+          if (numero % 3 === 0 && numero !== 0) {
+            divisiveisPorTres++;
+          }
+        }
+
+        const res = document.querySelector("#resultado");
+        res.value = `Números sorteados: ${sorteados.join(", ")}\n` +
+                    `Acima de 5: ${acimaDeCinco}\n` +
+                    `Divisíveis por 3: ${divisiveisPorTres}`;
+      }
+    </script>
+  </body>
+</html>
