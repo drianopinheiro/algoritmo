@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Exercícios de Algoritmo 49</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Contador de pares e ímpares</h2>
+      <h3>Exercícios de Algoritmo 49</h3>
+
+      <div class="margin-10px">
+        <label>Digite 6 números inteiros:</label><br />
+        <input type="number" class="numero margin-top-5px" /><br />
+        <input type="number" class="numero margin-top-5px" /><br />
+        <input type="number" class="numero margin-top-5px" /><br />
+        <input type="number" class="numero margin-top-5px" /><br />
+        <input type="number" class="numero margin-top-5px" /><br />
+        <input type="number" class="numero margin-top-5px" />
+      </div>
+
+      <div class="margin-10px">
+        <label for="resultado">Resultado:</label>
+        <input
+          type="text"
+          id="resultado"
+          readonly
+          disabled
+          class="margin-left-10px"
+        />
+      </div>
+
+      <button onclick="contarParesImpares()">Contar Pares e Ímpares</button>
+    </div>
+
+    <script>
+      // 49) Crie um programa que leia 6 números inteiros e no final mostre quantos deles 
+      // são pares e quantos são ímpares.
+
+      function contarParesImpares() {
+        const inputs = document.querySelectorAll(".numero");
+        let pares = 0;
+        let impares = 0;
+        let preenchido = true;
+
+        inputs.forEach((input) => {
+          const valor = Number(input.value);
+          if (isNaN(valor)) {
+            preenchido = false;
+          } else {
+            if (valor % 2 === 0) {
+              pares++;
+            } else {
+              impares++;
+            }
+          }
+        });
+
+        const res = document.querySelector("#resultado");
+
+        if (!preenchido) {
+          res.value = "Preencha todos os campos corretamente.";
+        } else {
+          res.value = `${pares} pares e ${impares} ímpares`;
+        }
+      }
+    </script>
+  </body>
+</html>
