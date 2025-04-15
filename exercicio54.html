@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 54 - Peso e Altura</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Análise de Peso e Altura</h2>
+    <h3>Exercício de Algoritmo 54</h3>
+
+    <div class="margin-10px">
+      <label>Preencha o peso (kg) e altura (m) de 7 pessoas:</label><br />
+
+      <!-- Gerando os inputs para 7 pessoas -->
+      <div class="margin-top-5px">Pessoa 1:
+        <input type="number" class="peso" placeholder="Peso (kg)" min="0" step="0.1" />
+        <input type="number" class="altura" placeholder="Altura (m)" min="0" step="0.01" />
+      </div>
+
+      <div class="margin-top-5px">Pessoa 2:
+        <input type="number" class="peso" placeholder="Peso (kg)" min="0" step="0.1" />
+        <input type="number" class="altura" placeholder="Altura (m)" min="0" step="0.01" />
+      </div>
+
+      <div class="margin-top-5px">Pessoa 3:
+        <input type="number" class="peso" placeholder="Peso (kg)" min="0" step="0.1" />
+        <input type="number" class="altura" placeholder="Altura (m)" min="0" step="0.01" />
+      </div>
+
+      <div class="margin-top-5px">Pessoa 4:
+        <input type="number" class="peso" placeholder="Peso (kg)" min="0" step="0.1" />
+        <input type="number" class="altura" placeholder="Altura (m)" min="0" step="0.01" />
+      </div>
+
+      <div class="margin-top-5px">Pessoa 5:
+        <input type="number" class="peso" placeholder="Peso (kg)" min="0" step="0.1" />
+        <input type="number" class="altura" placeholder="Altura (m)" min="0" step="0.01" />
+      </div>
+
+      <div class="margin-top-5px">Pessoa 6:
+        <input type="number" class="peso" placeholder="Peso (kg)" min="0" step="0.1" />
+        <input type="number" class="altura" placeholder="Altura (m)" min="0" step="0.01" />
+      </div>
+
+      <div class="margin-top-5px">Pessoa 7:
+        <input type="number" class="peso" placeholder="Peso (kg)" min="0" step="0.1" />
+        <input type="number" class="altura" placeholder="Altura (m)" min="0" step="0.01" />
+      </div>
+    </div>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea
+        id="resultado"
+        readonly
+        disabled
+        class="margin-left-10px"
+        rows="7"
+        cols="40"
+      ></textarea>
+    </div>
+
+    <button onclick="analisarPesoAltura()">Analisar Dados</button>
+  </div>
+
+  <script>
+    // 54) Desenvolva um aplicativo que leia o peso e a altura de 7 pessoas, mostrando no final:
+    // a) Qual foi a média de altura do grupo
+    // b) Quantas pessoas pesam mais de 90Kg
+    // c) Quantas pessoas que pesam menos de 50Kg têm menos de 1.60m
+    // d) Quantas pessoas que medem mais de 1.90m pesam mais de 100Kg.
+
+    function analisarPesoAltura() {
+      const pesos = document.querySelectorAll(".peso");
+      const alturas = document.querySelectorAll(".altura");
+
+      let somaAltura = 0;
+      let maisDe90kg = 0;
+      let menos50kgEMenos160 = 0;
+      let mais190eMais100 = 0;
+      let preenchido = true;
+
+      for (let i = 0; i < 7; i++) {
+        const peso = parseFloat(pesos[i].value);
+        const altura = parseFloat(alturas[i].value);
+
+        if (isNaN(peso) || isNaN(altura) || peso < 0 || altura <= 0) {
+          preenchido = false;
+          break;
+        }
+
+        somaAltura += altura;
+
+        if (peso > 90) maisDe90kg++;
+        if (peso < 50 && altura < 1.60) menos50kgEMenos160++;
+        if (altura > 1.90 && peso > 100) mais190eMais100++;
+      }
+
+      const res = document.querySelector("#resultado");
+
+      if (!preenchido) {
+        res.value = "Preencha todos os campos corretamente.";
+      } else {
+        const mediaAltura = somaAltura / 7;
+
+        res.value =
+          `Média de altura do grupo: ${mediaAltura.toFixed(2)} m\n` +
+          `Pessoas com mais de 90kg: ${maisDe90kg}\n` +
+          `Pessoas com <50kg e <1.60m: ${menos50kgEMenos160}\n` +
+          `Pessoas com >1.90m e >100kg: ${mais190eMais100}`;
+      }
+    }
+  </script>
+</body>
+</html>
