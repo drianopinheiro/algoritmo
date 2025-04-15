@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 55 - Jogo de Adivinhação</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Jogo de Adivinhação</h2>
+    <h3>Exercício de Algoritmo 55</h3>
+
+    <div class="margin-10px">
+      <label for="tentativa">Digite um número entre 1 e 10:</label>
+      <input type="number" id="tentativa" min="1" max="10" />
+    </div>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea
+        id="resultado"
+        readonly
+        disabled
+        rows="5"
+        cols="40"
+      ></textarea>
+    </div>
+
+    <button onclick="fazerTentativa()">Tentar</button>
+    <button onclick="reiniciarJogo()">Reiniciar</button>
+  </div>
+
+  <script>
+    // 55) [DESAFIO] Vamos melhorar o jogo que fizemos no exercício 32.
+    // A partir de agora, o computador vai sortear um número entre 1 e 10
+    // e o jogador vai ter 4 tentativas para tentar acertar.
+
+    let numeroSecreto = Math.floor(Math.random() * 10) + 1;
+    let tentativasRestantes = 4;
+    let resultado = document.getElementById("resultado");
+
+    function fazerTentativa() {
+      const palpite = parseInt(document.getElementById("tentativa").value);
+
+      if (tentativasRestantes === 0) {
+        resultado.value = "Você já usou todas as tentativas.\nClique em Reiniciar para jogar novamente.";
+        return;
+      }
+
+      if (isNaN(palpite) || palpite < 1 || palpite > 10) {
+        resultado.value += `Por favor, digite um número de 1 a 10.\n`;
+        return;
+      }
+
+      tentativasRestantes--;
+
+      if (palpite === numeroSecreto) {
+        resultado.value += `Parabéns! Você acertou o número ${numeroSecreto}!\n`;
+        tentativasRestantes = 0;
+      } else {
+        resultado.value += `Errou! Você ainda tem ${tentativasRestantes} tentativa(s).\n`;
+        if (tentativasRestantes === 0) {
+          resultado.value += `O número correto era ${numeroSecreto}. Fim de jogo!\n`;
+        }
+      }
+    }
+
+    function reiniciarJogo() {
+      numeroSecreto = Math.floor(Math.random() * 10) + 1;
+      tentativasRestantes = 4;
+      resultado.value = "";
+      document.getElementById("tentativa").value = "";
+    }
+  </script>
+</body>
+</html>
