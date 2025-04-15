@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 57 - Salários por Sexo</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Cadastro de Funcionários</h2>
+    <h3>Exercício de Algoritmo 57</h3>
+
+    <div class="margin-10px">
+      <label for="salario">Salário:</label>
+      <input type="number" id="salario" min="0" step="0.01" />
+    </div>
+
+    <div class="margin-10px">
+      <label for="sexo">Sexo:</label>
+      <select id="sexo">
+        <option value="">Selecione</option>
+        <option value="M">Masculino</option>
+        <option value="F">Feminino</option>
+      </select>
+    </div>
+
+    <button onclick="adicionarFuncionario()">Adicionar Funcionário</button>
+    <button onclick="mostrarResultado()">Mostrar Totais</button>
+    <button onclick="reiniciar()">Reiniciar</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea id="resultado" readonly disabled rows="6" cols="40"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 57) Desenvolva um aplicativo que leia o salário e o sexo de vários funcionários.
+    // No final, mostre o total de salários pagos aos homens e o total pago às mulheres.
+    // O programa vai perguntar ao usuário se ele quer continuar ou não.
+
+    let totalHomens = 0;
+    let totalMulheres = 0;
+    const resultado = document.getElementById("resultado");
+
+    function adicionarFuncionario() {
+      const salario = parseFloat(document.getElementById("salario").value);
+      const sexo = document.getElementById("sexo").value.toUpperCase();
+
+      if (isNaN(salario) || salario <= 0 || (sexo !== "M" && sexo !== "F")) {
+        alert("Por favor, preencha todos os campos corretamente.");
+        return;
+      }
+
+      if (sexo === "M") {
+        totalHomens += salario;
+      } else if (sexo === "F") {
+        totalMulheres += salario;
+      }
+
+      resultado.value += `Salário R$${salario.toFixed(2)} adicionado para sexo ${sexo}.\n`;
+
+      // Pergunta se deseja continuar
+      const continuar = confirm("Deseja cadastrar outro funcionário?");
+      if (!continuar) {
+        mostrarResultado();
+      } else {
+        document.getElementById("salario").value = "";
+        document.getElementById("sexo").value = "";
+      }
+    }
+
+    function mostrarResultado() {
+      resultado.value += `\nTotal pago aos HOMENS: R$${totalHomens.toFixed(2)}\n`;
+      resultado.value += `Total pago às MULHERES: R$${totalMulheres.toFixed(2)}\n`;
+    }
+
+    function reiniciar() {
+      totalHomens = 0;
+      totalMulheres = 0;
+      resultado.value = "";
+      document.getElementById("salario").value = "";
+      document.getElementById("sexo").value = "";
+    }
+  </script>
+</body>
+</html>
