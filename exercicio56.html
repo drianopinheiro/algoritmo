@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 56 - Somatório com Parada</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Somando até o 1111</h2>
+    <h3>Exercício de Algoritmo 56</h3>
+
+    <div class="margin-10px">
+      <label for="numero">Digite um número (1111 para parar):</label>
+      <input type="number" id="numero" />
+    </div>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea
+        id="resultado"
+        readonly
+        disabled
+        rows="6"
+        cols="40"
+      ></textarea>
+    </div>
+
+    <button onclick="adicionarNumero()">Adicionar Número</button>
+    <button onclick="reiniciar()">Reiniciar</button>
+  </div>
+
+  <script>
+    // 56) Crie um programa que leia vários números pelo teclado
+    // e mostre no final o somatório entre eles.
+    // Obs: O programa será interrompido quando o número 1111 for digitado
+
+    let soma = 0;
+    let finalizado = false;
+    const resultado = document.getElementById("resultado");
+
+    function adicionarNumero() {
+      if (finalizado) {
+        resultado.value += "O programa já foi finalizado. Clique em Reiniciar.\n";
+        return;
+      }
+
+      const valor = parseInt(document.getElementById("numero").value);
+
+      if (isNaN(valor)) {
+        resultado.value += "Por favor, digite um número válido.\n";
+        return;
+      }
+
+      if (valor === 1111) {
+        resultado.value += `Programa finalizado.\nSomatório final: ${soma}`;
+        finalizado = true;
+        return;
+      }
+
+      soma += valor;
+      resultado.value += `Adicionado: ${valor} | Soma atual: ${soma}\n`;
+      document.getElementById("numero").value = "";
+    }
+
+    function reiniciar() {
+      soma = 0;
+      finalizado = false;
+      resultado.value = "";
+      document.getElementById("numero").value = "";
+    }
+  </script>
+</body>
+</html>
