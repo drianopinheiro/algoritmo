@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 59 - Idade e Sexo</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Cadastro de Pessoas</h2>
+    <h3>Exercício de Algoritmo 59</h3>
+
+    <div class="margin-10px">
+      <label for="idade">Idade:</label>
+      <input type="number" id="idade" min="0" />
+    </div>
+
+    <div class="margin-10px">
+      <label for="sexo">Sexo:</label>
+      <select id="sexo">
+        <option value="">Selecione</option>
+        <option value="M">Masculino</option>
+        <option value="F">Feminino</option>
+      </select>
+    </div>
+
+    <button onclick="adicionarPessoa()">Adicionar Pessoa</button>
+    <button onclick="mostrarResultado()">Mostrar Resultado</button>
+    <button onclick="reiniciar()">Reiniciar</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea id="resultado" readonly disabled rows="8" cols="45"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 59) Crie um programa que leia o sexo e a idade de várias pessoas.
+    // O programa vai perguntar se o usuário quer continuar ou não a cada pessoa.
+    // No final, mostre:
+    // a) maior idade lida
+    // b) quantos homens foram cadastrados
+    // c) idade da mulher mais jovem
+    // d) média de idade entre os homens
+
+    let maiorIdade = 0;
+    let totalHomens = 0;
+    let somaIdadeHomens = 0;
+    let mulherMaisJovem = Infinity;
+    const resultado = document.getElementById("resultado");
+
+    function adicionarPessoa() {
+      const idade = parseInt(document.getElementById("idade").value);
+      const sexo = document.getElementById("sexo").value.toUpperCase();
+
+      if (isNaN(idade) || idade < 0 || (sexo !== "M" && sexo !== "F")) {
+        alert("Preencha corretamente todos os campos.");
+        return;
+      }
+
+      if (idade > maiorIdade) {
+        maiorIdade = idade;
+      }
+
+      if (sexo === "M") {
+        totalHomens++;
+        somaIdadeHomens += idade;
+      } else if (sexo === "F") {
+        if (idade < mulherMaisJovem) {
+          mulherMaisJovem = idade;
+        }
+      }
+
+      resultado.value += `Pessoa adicionada: ${idade} anos, sexo ${sexo}.\n`;
+
+      const continuar = confirm("Deseja cadastrar outra pessoa?");
+      if (!continuar) {
+        mostrarResultado();
+      }
+
+      document.getElementById("idade").value = "";
+      document.getElementById("sexo").value = "";
+    }
+
+    function mostrarResultado() {
+      resultado.value += `\nMaior idade lida: ${maiorIdade} anos\n`;
+      resultado.value += `Total de homens cadastrados: ${totalHomens}\n`;
+      resultado.value += `Idade da mulher mais jovem: ${
+        mulherMaisJovem === Infinity ? "Nenhuma cadastrada" : mulherMaisJovem + " anos"
+      }\n`;
+      resultado.value += `Média de idade entre os homens: ${
+        totalHomens > 0 ? (somaIdadeHomens / totalHomens).toFixed(1) + " anos" : "Nenhum homem cadastrado"
+      }\n`;
+    }
+
+    function reiniciar() {
+      maiorIdade = 0;
+      totalHomens = 0;
+      somaIdadeHomens = 0;
+      mulherMaisJovem = Infinity;
+      resultado.value = "";
+      document.getElementById("idade").value = "";
+      document.getElementById("sexo").value = "";
+    }
+  </script>
+</body>
+</html>
