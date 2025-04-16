@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 60 - Cadastro de Pessoas</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Cadastro de Pessoas</h2>
+    <h3>Exercício de Algoritmo 60</h3>
+
+    <div class="margin-10px">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" />
+    </div>
+
+    <div class="margin-10px">
+      <label for="idade">Idade:</label>
+      <input type="number" id="idade" min="0" />
+    </div>
+
+    <div class="margin-10px">
+      <label for="sexo">Sexo:</label>
+      <select id="sexo">
+        <option value="">Selecione</option>
+        <option value="M">Masculino</option>
+        <option value="F">Feminino</option>
+      </select>
+    </div>
+
+    <button onclick="adicionarPessoa()">Adicionar Pessoa</button>
+    <button onclick="mostrarResultado()">Mostrar Resultado</button>
+    <button onclick="reiniciar()">Reiniciar</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea id="resultado" readonly disabled rows="10" cols="50"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 60) Desenvolva um algoritmo que leia o nome, a idade e o sexo de várias pessoas.
+    // O programa vai perguntar se o usuário quer ou não continuar.
+    // No final, mostre:
+    // a) O nome da pessoa mais velha
+    // b) O nome da mulher mais jovem
+    // c) A média de idade do grupo
+    // d) Quantos homens têm mais de 30 anos
+    // e) Quantas mulheres têm menos de 18 anos
+
+    let totalPessoas = 0;
+    let somaIdades = 0;
+    let nomeMaisVelho = "";
+    let idadeMaisVelha = 0;
+    let nomeMulherMaisJovem = "";
+    let idadeMulherMaisJovem = Infinity;
+    let homensMais30 = 0;
+    let mulheresMenos18 = 0;
+
+    const resultado = document.getElementById("resultado");
+
+    function adicionarPessoa() {
+      const nome = document.getElementById("nome").value.trim();
+      const idade = parseInt(document.getElementById("idade").value);
+      const sexo = document.getElementById("sexo").value.toUpperCase();
+
+      if (nome === "" || isNaN(idade) || idade < 0 || (sexo !== "M" && sexo !== "F")) {
+        alert("Preencha corretamente todos os campos.");
+        return;
+      }
+
+      totalPessoas++;
+      somaIdades += idade;
+
+      if (idade > idadeMaisVelha) {
+        idadeMaisVelha = idade;
+        nomeMaisVelho = nome;
+      }
+
+      if (sexo === "M") {
+        if (idade > 30) {
+          homensMais30++;
+        }
+      } else if (sexo === "F") {
+        if (idade < 18) {
+          mulheresMenos18++;
+        }
+        if (idade < idadeMulherMaisJovem) {
+          idadeMulherMaisJovem = idade;
+          nomeMulherMaisJovem = nome;
+        }
+      }
+
+      resultado.value += `Pessoa adicionada: ${nome}, ${idade} anos, sexo ${sexo}.\n`;
+
+      const continuar = confirm("Deseja cadastrar outra pessoa?");
+      if (!continuar) {
+        mostrarResultado();
+      }
+
+      document.getElementById("nome").value = "";
+      document.getElementById("idade").value = "";
+      document.getElementById("sexo").value = "";
+    }
+
+    function mostrarResultado() {
+      if (totalPessoas === 0) {
+        resultado.value += "Nenhuma pessoa cadastrada.\n";
+        return;
+      }
+
+      const mediaIdades = somaIdades / totalPessoas;
+
+      resultado.value += `\nNome da pessoa mais velha: ${nomeMaisVelho} (${idadeMaisVelha} anos)\n`;
+      resultado.value += `Nome da mulher mais jovem: ${
+        idadeMulherMaisJovem === Infinity ? "Nenhuma cadastrada" : nomeMulherMaisJovem + " (" + idadeMulherMaisJovem + " anos)"
+      }\n`;
+      resultado.value += `Média de idade do grupo: ${mediaIdades.toFixed(1)} anos\n`;
+      resultado.value += `Homens com mais de 30 anos: ${homensMais30}\n`;
+      resultado.value += `Mulheres com menos de 18 anos: ${mulheresMenos18}\n`;
+    }
+
+    function reiniciar() {
+      totalPessoas = 0;
+      somaIdades = 0;
+      nomeMaisVelho = "";
+      idadeMaisVelha = 0;
+      nomeMulherMaisJovem = "";
+      idadeMulherMaisJovem = Infinity;
+      homensMais30 = 0;
+      mulheresMenos18 = 0;
+      resultado.value = "";
+      document.getElementById("nome").value = "";
+      document.getElementById("idade").value = "";
+      document.getElementById("sexo").value = "";
+    }
+  </script>
+</body>
+</html>
