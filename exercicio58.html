@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 58 - Média de Idades</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Média de Idades</h2>
+    <h3>Exercício de Algoritmo 58</h3>
+
+    <div class="margin-10px">
+      <label for="idade">Digite a idade do aluno (999 para parar):</label>
+      <input type="number" id="idade" min="0" />
+    </div>
+
+    <button onclick="adicionarIdade()">Adicionar Idade</button>
+    <button onclick="mostrarResultado()">Mostrar Resultado</button>
+    <button onclick="reiniciar()">Reiniciar</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea id="resultado" readonly disabled rows="6" cols="40"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 58) Faça um algoritmo que leia a idade de vários alunos de uma turma.
+    // O programa vai parar quando for digitada a idade 999.
+    // No final, mostre quantos alunos existem na turma e qual é a média de idade do grupo.
+
+    let totalAlunos = 0;
+    let somaIdades = 0;
+    let finalizado = false;
+    const resultado = document.getElementById("resultado");
+
+    function adicionarIdade() {
+      if (finalizado) {
+        resultado.value += "O programa já foi finalizado. Clique em Reiniciar.\n";
+        return;
+      }
+
+      const idade = parseInt(document.getElementById("idade").value);
+
+      if (isNaN(idade) || idade < 0) {
+        alert("Digite uma idade válida.");
+        return;
+      }
+
+      if (idade === 999) {
+        finalizado = true;
+        mostrarResultado();
+        return;
+      }
+
+      totalAlunos++;
+      somaIdades += idade;
+
+      resultado.value += `Idade ${idade} adicionada. Total de alunos: ${totalAlunos}\n`;
+      document.getElementById("idade").value = "";
+    }
+
+    function mostrarResultado() {
+      if (totalAlunos === 0) {
+        resultado.value += "Nenhuma idade foi registrada.\n";
+      } else {
+        const media = somaIdades / totalAlunos;
+        resultado.value += `\nTotal de alunos: ${totalAlunos}\n`;
+        resultado.value += `Média de idade: ${media.toFixed(1)} anos\n`;
+      }
+    }
+
+    function reiniciar() {
+      totalAlunos = 0;
+      somaIdades = 0;
+      finalizado = false;
+      resultado.value = "";
+      document.getElementById("idade").value = "";
+    }
+  </script>
+</body>
+</html>
