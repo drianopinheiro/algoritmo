@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 61 - Contagem com faça enquanto</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Contagem com "faça enquanto"</h2>
+    <h3>Exercício de Algoritmo 61</h3>
+
+    <button onclick="mostrarContagem()">Mostrar Contagem</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea id="resultado" readonly disabled rows="4" cols="40"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 61) Crie um programa que mostre na tela a seguinte contagem, usando a estrutura “faça enquanto”
+    // 0 3 6 9 12 15 18 21 24 27 30 Acabou!
+
+    function mostrarContagem() {
+      let resultado = "";
+      let contador = 0;
+
+      do {
+        resultado += contador + " ";
+        contador += 3;
+      } while (contador <= 30);
+
+      resultado += "Acabou!";
+      document.getElementById("resultado").value = resultado;
+    }
+  </script>
+</body>
+</html>
