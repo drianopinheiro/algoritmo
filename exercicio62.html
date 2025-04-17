@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 62 - Leitura de Idades</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Leitura de Idades</h2>
+    <h3>Exercício de Algoritmo 62</h3>
+
+    <button onclick="coletarIdades()">Iniciar Coleta de Idades</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea id="resultado" readonly disabled rows="6" cols="50"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 62) Faça um programa usando a estrutura “faça enquanto” que leia a idade de várias pessoas.
+    // A cada laço, pergunte se o usuário quer continuar.
+    // No final mostre:
+    // a) Quantas idades foram digitadas
+    // b) Qual é a média entre as idades digitadas
+    // c) Quantas pessoas têm 21 anos ou mais.
+
+    function coletarIdades() {
+      let totalIdades = 0;
+      let somaIdades = 0;
+      let mais21 = 0;
+      let continuar;
+
+      do {
+        let idade = parseInt(prompt("Digite a idade:"));
+        if (!isNaN(idade) && idade >= 0) {
+          totalIdades++;
+          somaIdades += idade;
+          if (idade >= 21) {
+            mais21++;
+          }
+        } else {
+          alert("Por favor, digite uma idade válida.");
+        }
+
+        continuar = prompt("Deseja continuar? (S/N)").toLowerCase();
+      } while (continuar === "s");
+
+      let media = totalIdades > 0 ? (somaIdades / totalIdades).toFixed(2) : 0;
+
+      const resultado = `
+Total de idades digitadas: ${totalIdades}
+Média das idades: ${media}
+Pessoas com 21 anos ou mais: ${mais21}
+Acabou!
+      `;
+      document.getElementById("resultado").value = resultado.trim();
+    }
+  </script>
+</body>
+</html>
