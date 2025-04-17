@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 63 - Leitura de Números</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Leitura de Vários Números</h2>
+    <h3>Exercício de Algoritmo 63</h3>
+
+    <button onclick="lerNumeros()">Iniciar Coleta de Números</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea id="resultado" readonly disabled rows="8" cols="50"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 63) Crie um programa usando a estrutura “faça enquanto” que leia vários números.
+    // A cada laço, pergunte se o usuário quer continuar.
+    // No final, mostre:
+    // a) O somatório entre todos os valores
+    // b) Qual foi o menor valor digitado
+    // c) A média entre todos os valores
+    // d) Quantos valores são pares
+
+    function lerNumeros() {
+      let soma = 0;
+      let total = 0;
+      let menor = null;
+      let pares = 0;
+      let continuar;
+
+      do {
+        let numero = parseInt(prompt("Digite um número:"));
+        if (!isNaN(numero)) {
+          soma += numero;
+          total++;
+
+          if (menor === null || numero < menor) {
+            menor = numero;
+          }
+
+          if (numero % 2 === 0) {
+            pares++;
+          }
+        } else {
+          alert("Número inválido. Tente novamente.");
+        }
+
+        continuar = prompt("Deseja continuar? (S/N)").toLowerCase();
+      } while (continuar === "s");
+
+      let media = total > 0 ? (soma / total).toFixed(2) : 0;
+
+      const resultado = `
+Somatório dos valores: ${soma}
+Menor valor digitado: ${menor}
+Média dos valores: ${media}
+Quantidade de números pares: ${pares}
+Acabou!
+      `;
+      document.getElementById("resultado").value = resultado.trim();
+    }
+  </script>
+</body>
+</html>
