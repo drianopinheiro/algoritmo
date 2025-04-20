@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 66 - Tabuada</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Tabuada de um Número</h2>
+    <h3>Exercício de Algoritmo 66</h3>
+
+    <div class="margin-10px">
+      <label for="numero">Digite um número:</label>
+      <input type="number" id="numero" class="margin-left-10px" />
+    </div>
+
+    <button onclick="mostrarTabuada()">Mostrar Tabuada</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea id="resultado" readonly disabled rows="12" cols="30"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 66) Escreva um programa que leia um número qualquer e mostre a tabuada desse número, usando a estrutura “para”.
+    // Ex: Digite um valor: 5
+    // 5 x 1 = 5
+    // 5 x 2 = 10
+    // ...
+    // 5 x 10 = 50
+
+    function mostrarTabuada() {
+      const numero = Number(document.getElementById("numero").value);
+      const res = document.getElementById("resultado");
+
+      if (isNaN(numero)) {
+        res.value = "Por favor, digite um número válido.";
+        return;
+      }
+
+      let tabuada = "";
+      for (let i = 1; i <= 10; i++) {
+        tabuada += `${numero} x ${i} = ${numero * i}\n`;
+      }
+
+      res.value = tabuada.trim();
+    }
+  </script>
+</body>
+</html>
