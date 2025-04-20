@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 65 - Contagem Regressiva</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Contagem Regressiva de 100 a 0</h2>
+    <h3>Exercício de Algoritmo 65</h3>
+
+    <button onclick="mostrarContagem()">Mostrar Contagem</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea id="resultado" readonly disabled rows="2" cols="50"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 65) Desenvolva um programa usando a estrutura “para” que mostre na tela a seguinte contagem:
+    // 100 90 80 70 60 50 40 30 20 10 0 Acabou!
+
+    function mostrarContagem() {
+      let contagem = "";
+
+      for (let i = 100; i >= 0; i -= 10) {
+        contagem += i + " ";
+      }
+
+      contagem += "Acabou!";
+      document.getElementById("resultado").value = contagem.trim();
+    }
+  </script>
+</body>
+</html>
