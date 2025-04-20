@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 67 - Contagem até o número</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Contagem até o número digitado</h2>
+    <h3>Exercício de Algoritmo 67</h3>
+
+    <div class="margin-10px">
+      <label for="numero">Digite um número:</label>
+      <input type="number" id="numero" class="margin-left-10px" min="0" />
+    </div>
+
+    <button onclick="mostrarContagem()">Mostrar Contagem</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Contagem:</label><br />
+      <textarea id="resultado" readonly disabled rows="2" cols="50"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 67) Faça um programa usando a estrutura “para” que leia um número inteiro
+    // positivo e mostre na tela uma contagem de 0 até o valor digitado:
+    // Ex: Digite um valor: 9
+    // Contagem: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, FIM!
+
+    function mostrarContagem() {
+      const numero = Number(document.getElementById("numero").value);
+      const res = document.getElementById("resultado");
+
+      if (isNaN(numero) || numero < 0) {
+        res.value = "Por favor, digite um número inteiro positivo.";
+        return;
+      }
+
+      let contagem = "";
+      for (let i = 0; i <= numero; i++) {
+        contagem += i + (i < numero ? ", " : ", FIM!");
+      }
+
+      res.value = contagem;
+    }
+  </script>
+</body>
+</html>
