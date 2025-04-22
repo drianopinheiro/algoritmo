@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 69 - PA</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Progressão Aritmética</h2>
+    <h3>Exercício de Algoritmo 69</h3>
+
+    <div class="margin-10px">
+      <label for="primeiro">Primeiro termo:</label>
+      <input type="number" id="primeiro" class="margin-left-10px" />
+    </div>
+
+    <div class="margin-10px">
+      <label for="razao">Razão:</label>
+      <input type="number" id="razao" class="margin-left-10px" />
+    </div>
+
+    <button onclick="mostrarPA()">Gerar PA</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea id="resultado" readonly rows="5" cols="60"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 69) [DESAFIO] Desenvolva um programa que leia o primeiro termo e a razão de uma
+    // PA (Progressão Aritmética), mostrando na tela os 10 primeiros elementos da PA
+    // e a soma entre todos os valores da sequência.
+
+    function mostrarPA() {
+      const primeiro = Number(document.getElementById("primeiro").value);
+      const razao = Number(document.getElementById("razao").value);
+      const res = document.getElementById("resultado");
+
+      if (isNaN(primeiro) || isNaN(razao)) {
+        res.value = "Digite valores válidos.";
+        return;
+      }
+
+      let pa = "";
+      let soma = 0;
+
+      for (let i = 0; i < 10; i++) {
+        let termo = primeiro + i * razao;
+        pa += termo + (i < 9 ? ", " : "");
+        soma += termo;
+      }
+
+      res.value = `PA: ${pa}\nSoma dos 10 termos: ${soma}`;
+    }
+  </script>
+</body>
+</html>
