@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 70 - Fibonacci</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Sequência de Fibonacci</h2>
+    <h3>Exercício de Algoritmo 70</h3>
+
+    <button onclick="mostrarFibonacci()">Mostrar Sequência</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea id="resultado" readonly rows="3" cols="60"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 70) [DESAFIO] Faça um programa que mostre os 10 primeiros elementos da
+    // Sequência de Fibonacci: 1 1 2 3 5 8 13 21 34 55
+
+    function mostrarFibonacci() {
+      const res = document.getElementById("resultado");
+      let fib = [1, 1];
+
+      for (let i = 2; i < 10; i++) {
+        fib.push(fib[i - 1] + fib[i - 2]);
+      }
+
+      res.value = fib.join(", ");
+    }
+  </script>
+</body>
+</html>
