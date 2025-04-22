@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 68 - Sexo e Peso</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Cadastro de Sexo e Peso</h2>
+    <h3>Exercício de Algoritmo 68</h3>
+
+    <div id="formulario">
+      <!-- Os campos serão gerados via JavaScript -->
+    </div>
+
+    <button onclick="analisarDados()">Analisar Dados</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea id="resultado" readonly rows="6" cols="60"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 68) Crie um programa que leia sexo e peso de 8 pessoas, usando a estrutura “para”.
+    // a) Quantas mulheres foram cadastradas
+    // b) Quantos homens pesam mais de 100Kg
+    // c) A média de peso entre as mulheres
+    // d) O maior peso entre os homens
+
+    const formulario = document.getElementById("formulario");
+
+    // Criar os campos de entrada para 8 pessoas
+    for (let i = 1; i <= 8; i++) {
+      const div = document.createElement("div");
+      div.classList.add("margin-10px");
+      div.innerHTML = `
+        <strong>Pessoa ${i}</strong><br />
+        Sexo:
+        <select id="sexo${i}">
+          <option value="M">Masculino</option>
+          <option value="F">Feminino</option>
+        </select>
+        Peso:
+        <input type="number" id="peso${i}" min="0" step="0.1" required /> kg
+      `;
+      formulario.appendChild(div);
+    }
+
+    function analisarDados() {
+      let mulheres = 0;
+      let homens100kg = 0;
+      let somaPesoMulheres = 0;
+      let maiorPesoHomem = 0;
+
+      for (let i = 1; i <= 8; i++) {
+        const sexo = document.getElementById(`sexo${i}`).value;
+        const peso = Number(document.getElementById(`peso${i}`).value);
+
+        if (sexo === "F") {
+          mulheres++;
+          somaPesoMulheres += peso;
+        } else if (sexo === "M") {
+          if (peso > 100) {
+            homens100kg++;
+          }
+          if (peso > maiorPesoHomem) {
+            maiorPesoHomem = peso;
+          }
+        }
+      }
+
+      const mediaMulheres = mulheres > 0 ? (somaPesoMulheres / mulheres).toFixed(2) : 0;
+
+      const resultado = `
+a) Mulheres cadastradas: ${mulheres}
+b) Homens com mais de 100Kg: ${homens100kg}
+c) Média de peso das mulheres: ${mediaMulheres} Kg
+d) Maior peso entre os homens: ${maiorPesoHomem} Kg
+      `.trim();
+
+      document.getElementById("resultado").value = resultado;
+    }
+  </script>
+</body>
+</html>
