@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 72 - Vetor com Lógica</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Vetor com Lógica de Preenchimento</h2>
+    <h3>Exercício de Algoritmo 72</h3>
+
+    <button onclick="preencherVetor()">Mostrar Vetor</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea id="resultado" readonly rows="3" cols="60"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 72) Crie um programa que preencha automaticamente (usando lógica, não apenas
+    // atribuindo diretamente) um vetor numérico com 10 posições, conforme abaixo:
+    // 5 10 15 20 25 30 35 40 45 50
+    // 0  1  2  3  4  5  6  7  8  9
+
+    function preencherVetor() {
+      const res = document.getElementById("resultado");
+      const vetor = [];
+
+      for (let i = 0; i < 10; i++) {
+        vetor.push((i + 1) * 5);
+      }
+
+      const valores = vetor.join(" ");
+      const indices = vetor.map((_, i) => i).join(" ");
+
+      res.value = `${valores}\n${indices}`;
+    }
+  </script>
+</body>
+</html>
