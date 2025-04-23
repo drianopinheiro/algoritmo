@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 71 - Vetor Automático</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Preenchimento Automático de Vetor</h2>
+    <h3>Exercício de Algoritmo 71</h3>
+
+    <button onclick="mostrarVetor()">Mostrar Vetor</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea id="resultado" readonly rows="3" cols="60"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 71) Faça um programa que preencha automaticamente um vetor numérico com 8
+    // posições, conforme abaixo:
+    // 999 999 999 999 999 999 999 999
+    //  0   1   2   3   4   5   6   7
+
+    function mostrarVetor() {
+      const res = document.getElementById("resultado");
+      const vetor = new Array(8).fill(999);
+      const valores = vetor.join(" ");
+      const indices = vetor.map((_, i) => i).join(" ");
+
+      res.value = `${valores}\n${indices}`;
+    }
+  </script>
+</body>
+</html>
