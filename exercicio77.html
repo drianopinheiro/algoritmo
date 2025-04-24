@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 77 - Ordem Inversa</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Nomes em Ordem Inversa</h2>
+    <h3>Exercício de Algoritmo 77</h3>
+
+    <div id="inputs" class="margin-10px">
+      <!-- Campos para digitar os nomes -->
+      <label>Digite 7 nomes:</label><br />
+      <input type="text" class="nome" placeholder="Nome 1" /><br />
+      <input type="text" class="nome" placeholder="Nome 2" /><br />
+      <input type="text" class="nome" placeholder="Nome 3" /><br />
+      <input type="text" class="nome" placeholder="Nome 4" /><br />
+      <input type="text" class="nome" placeholder="Nome 5" /><br />
+      <input type="text" class="nome" placeholder="Nome 6" /><br />
+      <input type="text" class="nome" placeholder="Nome 7" /><br />
+    </div>
+
+    <button onclick="mostrarInverso()">Mostrar em Ordem Inversa</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Nomes na ordem inversa:</label><br />
+      <textarea id="resultado" readonly rows="4" cols="50"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 77) Faça um programa que leia 7 nomes de pessoas e guarde-os em um vetor. 
+    // No final, mostre uma listagem com todos os nomes informados, 
+    // na ordem inversa daquela em que eles foram informados.
+
+    function mostrarInverso() {
+      const inputs = document.querySelectorAll(".nome");
+      const nomes = [];
+
+      inputs.forEach(input => {
+        nomes.push(input.value.trim());
+      });
+
+      const nomesInversos = nomes.reverse();
+      const res = document.getElementById("resultado");
+      res.value = nomesInversos.join(", ");
+    }
+  </script>
+</body>
+</html>
