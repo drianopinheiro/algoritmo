@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 75 - Fibonacci</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Sequência de Fibonacci no Vetor</h2>
+    <h3>Exercício de Algoritmo 75</h3>
+
+    <button onclick="mostrarFibonacci()">Mostrar Fibonacci</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Resultado:</label><br />
+      <textarea id="resultado" readonly rows="4" cols="80"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 75) Crie um programa que preencha automaticamente (usando lógica, não apenas 
+    // atribuindo diretamente) um vetor numérico com 15 posições com os primeiros 
+    // elementos da sequência de Fibonacci:
+    // 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610
+
+    function mostrarFibonacci() {
+      const res = document.getElementById("resultado");
+      const vetor = [];
+
+      for (let i = 0; i < 15; i++) {
+        if (i === 0 || i === 1) {
+          vetor.push(1);
+        } else {
+          vetor.push(vetor[i - 1] + vetor[i - 2]);
+        }
+      }
+
+      const valores = vetor.join(" ");
+      const indices = vetor.map((_, i) => i).join(" ");
+
+      res.value = `${valores}\n${indices}`;
+    }
+  </script>
+</body>
+</html>
