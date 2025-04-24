@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 76 - Números Aleatórios</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Vetor com Números Aleatórios</h2>
+    <h3>Exercício de Algoritmo 76</h3>
+
+    <button onclick="gerarAleatorios()">Gerar Números</button>
+
+    <div class="margin-10px">
+      <label for="resultado">Números sorteados:</label><br />
+      <textarea id="resultado" readonly rows="3" cols="50"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 76) Crie um programa que preencha automaticamente um vetor numérico com 7 
+    // números gerados aleatoriamente pelo computador e depois mostre os valores 
+    // gerados na tela.
+
+    function gerarAleatorios() {
+      const res = document.getElementById("resultado");
+      const vetor = [];
+
+      for (let i = 0; i < 7; i++) {
+        const aleatorio = Math.floor(Math.random() * 100); // números de 0 a 99
+        vetor.push(aleatorio);
+      }
+
+      res.value = vetor.join(" ");
+    }
+  </script>
+</body>
+</html>
