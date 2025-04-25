@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 80 - Vetor e Chave</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Busca de Chave no Vetor</h2>
+    <h3>Exercício de Algoritmo 80</h3>
+
+    <div class="margin-10px">
+      <button onclick="sortearVetor()">Sortear Vetor</button><br/><br/>
+      <label for="chave">Digite um número (entre 1 e 15) para buscar no vetor:</label><br/>
+      <input type="number" id="chave" min="1" max="15" />
+      <button onclick="buscarChave()">Buscar Chave</button>
+    </div>
+
+    <div class="margin-10px">
+      <label for="vetor">Vetor sorteado (30 posições):</label><br/>
+      <textarea id="vetor" readonly rows="2" cols="70"></textarea><br/>
+
+      <label for="resultado">Resultado da busca:</label><br/>
+      <textarea id="resultado" readonly rows="4" cols="70"></textarea>
+    </div>
+  </div>
+
+  <script>
+    let vetor = [];
+
+    // Função para preencher o vetor com 30 números aleatórios entre 1 e 15
+    function sortearVetor() {
+      vetor = [];
+      for (let i = 0; i < 30; i++) {
+        let numero = Math.floor(Math.random() * 15) + 1;
+        vetor.push(numero);
+      }
+      document.getElementById("vetor").value = vetor.join(", ");
+      document.getElementById("resultado").value = "Vetor sorteado! Agora digite um número e clique em 'Buscar Chave'.";
+    }
+
+    // Função para buscar a chave digitada no vetor
+    function buscarChave() {
+      const chave = Number(document.getElementById("chave").value);
+      const posicoes = [];
+      let contador = 0;
+
+      vetor.forEach((valor, indice) => {
+        if (valor === chave) {
+          posicoes.push(indice);
+          contador++;
+        }
+      });
+
+      let resultado = `Chave buscada: ${chave}\n`;
+      resultado += `Total de vezes que apareceu: ${contador}\n`;
+      resultado += posicoes.length > 0 ? `Posições: ${posicoes.join(", ")}` : "A chave não foi encontrada no vetor.";
+      document.getElementById("resultado").value = resultado;
+    }
+  </script>
+</body>
+</html>
