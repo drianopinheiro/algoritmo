@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 78 - Múltiplos de 10</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Múltiplos de 10</h2>
+    <h3>Exercício de Algoritmo 78</h3>
+
+    <div id="inputs" class="margin-10px">
+      <label>Digite 15 números:</label><br />
+      <!-- Criando inputs para 15 números -->
+      <script>
+        for(let i = 0; i < 15; i++) {
+          document.write(`<input type="number" class="numero" placeholder="Número ${i + 1}" /><br/>`);
+        }
+      </script>
+    </div>
+
+    <button onclick="analisarNumeros()">Analisar Números</button>
+
+    <div class="margin-10px">
+      <label for="resultado1">Todos os números:</label><br />
+      <textarea id="resultado1" readonly rows="2" cols="60"></textarea><br />
+
+      <label for="resultado2">Posições com múltiplos de 10:</label><br />
+      <textarea id="resultado2" readonly rows="2" cols="60"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 78) Escreva um programa que leia 15 números e guarde-os em um vetor.
+    // No final, mostre o vetor inteiro e em seguida as posições dos múltiplos de 10.
+
+    function analisarNumeros() {
+      const inputs = document.querySelectorAll(".numero");
+      const numeros = [];
+      const posicoesMult10 = [];
+
+      inputs.forEach((input, index) => {
+        const valor = Number(input.value);
+        numeros.push(valor);
+
+        if (valor % 10 === 0 && valor !== 0) {
+          posicoesMult10.push(index);
+        }
+      });
+
+      document.getElementById("resultado1").value = numeros.join(", ");
+      document.getElementById("resultado2").value = posicoesMult10.length > 0 
+        ? posicoesMult10.map(p => `Posição ${p}`).join(", ")
+        : "Nenhum múltiplo de 10 encontrado.";
+    }
+  </script>
+</body>
+</html>
