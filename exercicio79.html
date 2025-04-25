@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 79 - Pares e Posições</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Números Pares e Posições</h2>
+    <h3>Exercício de Algoritmo 79</h3>
+
+    <div id="inputs" class="margin-10px">
+      <label>Digite 10 números inteiros:</label><br />
+      <!-- Criando inputs para 10 números -->
+      <script>
+        for(let i = 0; i < 10; i++) {
+          document.write(`<input type="number" class="numero" placeholder="Número ${i + 1}" /><br/>`);
+        }
+      </script>
+    </div>
+
+    <button onclick="analisarPares()">Verificar Pares</button>
+
+    <div class="margin-10px">
+      <label for="resultado1">Números pares digitados:</label><br />
+      <textarea id="resultado1" readonly rows="2" cols="60"></textarea><br />
+
+      <label for="resultado2">Posições dos números pares:</label><br />
+      <textarea id="resultado2" readonly rows="2" cols="60"></textarea>
+    </div>
+  </div>
+
+  <script>
+    // 79) Leia 10 números inteiros e mostre quais são pares e em que posições estão.
+    function analisarPares() {
+      const inputs = document.querySelectorAll(".numero");
+      const numeros = [];
+      const pares = [];
+      const posicoes = [];
+
+      inputs.forEach((input, index) => {
+        const valor = Number(input.value);
+        numeros.push(valor);
+        if (valor % 2 === 0) {
+          pares.push(valor);
+          posicoes.push(index);
+        }
+      });
+
+      document.getElementById("resultado1").value = pares.length > 0 ? pares.join(", ") : "Nenhum número par.";
+      document.getElementById("resultado2").value = posicoes.length > 0 
+        ? posicoes.map(p => `Posição ${p}`).join(", ")
+        : "Nenhuma posição com número par.";
+    }
+  </script>
+</body>
+</html>
