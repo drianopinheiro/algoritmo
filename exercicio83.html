@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício 83 - Vetor Aleatório e Ordenado</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Vetor Aleatório e Ordenado</h2>
+    <h3>Exercício de Algoritmo 83</h3>
+
+    <div class="margin-10px">
+      <button onclick="gerarVetor()">Gerar Vetor</button><br/><br/>
+
+      <label for="vetor">Vetor gerado:</label><br/>
+      <textarea id="vetor" readonly rows="2" cols="60"></textarea><br/><br/>
+
+      <label for="ordenado">Vetor em ordem crescente:</label><br/>
+      <textarea id="ordenado" readonly rows="2" cols="60"></textarea>
+    </div>
+  </div>
+
+  <script>
+    let vetor = [];
+
+    function gerarVetor() {
+      vetor = [];
+      for (let i = 0; i < 20; i++) {
+        vetor.push(Math.floor(Math.random() * 100)); // Número entre 0 e 99
+      }
+
+      document.getElementById("vetor").value = vetor.join(", ");
+
+      let vetorOrdenado = [...vetor].sort((a, b) => a - b);
+      document.getElementById("ordenado").value = vetorOrdenado.join(", ");
+    }
+  </script>
+</body>
+</html>
