@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Exercício 81 - Idades e Análise</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Cadastro de Idades</h2>
+    <h3>Exercício de Algoritmo 81</h3>
+
+    <div class="margin-10px">
+      <label for="idade">Digite a idade:</label><br/>
+      <input type="number" id="idade" min="0" />
+      <button onclick="adicionarIdade()">Adicionar Idade</button><br/><br/>
+
+      <button onclick="analisarIdades()">Analisar Idades</button>
+    </div>
+
+    <div class="margin-10px">
+      <label for="vetor">Idades cadastradas:</label><br/>
+      <textarea id="vetor" readonly rows="2" cols="60"></textarea><br/>
+
+      <label for="resultado">Resultado da análise:</label><br/>
+      <textarea id="resultado" readonly rows="8" cols="60"></textarea>
+    </div>
+  </div>
+
+  <script>
+    let idades = [];
+
+    function adicionarIdade() {
+      const idade = Number(document.getElementById("idade").value);
+      if (idade >= 0) {
+        if (idades.length < 8) {
+          idades.push(idade);
+          document.getElementById("vetor").value = idades.join(", ");
+          document.getElementById("idade").value = "";
+          document.getElementById("resultado").value = "";
+        } else {
+          alert("Já foram cadastradas 8 idades!");
+        }
+      } else {
+        alert("Por favor, digite uma idade válida (número positivo).");
+      }
+    }
+
+    function analisarIdades() {
+      if (idades.length < 8) {
+        alert("Cadastre todas as 8 idades primeiro!");
+        return;
+      }
+
+      let soma = 0;
+      let maioresDe25 = [];
+      let maiorIdade = Math.max(...idades);
+      let posicoesMaiorIdade = [];
+
+      idades.forEach((idade, indice) => {
+        soma += idade;
+        if (idade > 25) {
+          maioresDe25.push(indice);
+        }
+        if (idade === maiorIdade) {
+          posicoesMaiorIdade.push(indice);
+        }
+      });
+
+      let media = soma / idades.length;
+
+      let resultado = `Média de idades: ${media.toFixed(1)}\n`;
+      resultado += maioresDe25.length > 0 ? `Posições com idade > 25 anos: ${maioresDe25.join(", ")}\n` : "Nenhuma idade > 25 anos\n";
+      resultado += `Maior idade digitada: ${maiorIdade}\n`;
+      resultado += `Posições com a maior idade: ${posicoesMaiorIdade.join(", ")}`;
+
+      document.getElementById("resultado").value = resultado;
+    }
+  </script>
+</body>
+</html>
