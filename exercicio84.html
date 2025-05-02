@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercício 84 - Menores de Idade</title>
+</head>
+<body>
+  <h2>Cadastro de Pessoas</h2>
+
+  <div id="formulario">
+    <p><strong>Pessoa <span id="numero">1</span> de 9</strong></p>
+    <label>Nome: <input type="text" id="nome"></label><br><br>
+    <label>Idade: <input type="number" id="idade"></label><br><br>
+    <button onclick="adicionarPessoa()">Adicionar</button>
+  </div>
+
+  <hr>
+
+  <div>
+    <h3>Pessoas menores de idade:</h3>
+    <ul id="resultado"></ul>
+  </div>
+
+  <script>
+    const nomes = [];
+    const idades = [];
+    let contador = 0;
+
+    function adicionarPessoa() {
+      const nome = document.getElementById("nome").value.trim();
+      const idade = parseInt(document.getElementById("idade").value);
+
+      if (nome === "" || isNaN(idade)) {
+        alert("Preencha todos os campos corretamente.");
+        return;
+      }
+
+      nomes.push(nome);
+      idades.push(idade);
+      contador++;
+
+      document.getElementById("nome").value = "";
+      document.getElementById("idade").value = "";
+      document.getElementById("nome").focus();
+
+      if (contador < 9) {
+        document.getElementById("numero").textContent = contador + 1;
+      } else {
+        document.getElementById("formulario").innerHTML = "<p><strong>Cadastro finalizado!</strong></p>";
+        mostrarMenoresDeIdade();
+      }
+    }
+
+    function mostrarMenoresDeIdade() {
+      const lista = document.getElementById("resultado");
+      lista.innerHTML = "";
+
+      for (let i = 0; i < nomes.length; i++) {
+        if (idades[i] < 18) {
+          const item = document.createElement("li");
+          item.textContent = `${nomes[i]} - ${idades[i]} anos`;
+          lista.appendChild(item);
+        }
+      }
+    }
+  </script>
+</body>
+</html>
